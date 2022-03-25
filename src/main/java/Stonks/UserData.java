@@ -98,4 +98,9 @@ public class UserData implements Serializable
         DataStore<User> obj = new DataStore<User>();
         obj.close("user", users);
     }
+
+   static void showAllUsers(){
+        System.out.println(users.size());
+       for(User u : users) System.out.println(u.toString());
+    }
 }

@@ -13,7 +13,6 @@ public class MenuPage
     {
         Stage menuWindow = new Stage();
         menuWindow.setTitle("Stonks");
-
         GridPane menuLayout = new GridPane();
         menuLayout.setAlignment(Pos.CENTER);
         menuLayout.setHgap(10);
