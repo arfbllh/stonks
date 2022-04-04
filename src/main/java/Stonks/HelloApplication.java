@@ -11,7 +11,7 @@ public class HelloApplication extends Application
     {
 
         Stonk();
-        UserData.showAllUsers();
+        //UserData.showAllUsers();
 
         launch(args);
         Bonk();
