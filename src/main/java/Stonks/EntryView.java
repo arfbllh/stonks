@@ -47,6 +47,7 @@ public class EntryView
 
         cancel.setOnAction(e -> {
             entryViewWindow.close();
+            prev.close();
             EntryPage.display();
         });
 

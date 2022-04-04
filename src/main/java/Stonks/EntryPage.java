@@ -6,9 +6,8 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
+import javafx.scene.effect.DropShadow;
+import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
@@ -32,6 +31,17 @@ public class EntryPage
         leftCornerLayout.setVgap(10);
         leftCornerLayout.setHgap(10);
         leftCornerLayout.setPadding(new Insets(10, 10, 10, 10));
+
+
+        VBox vleftCornerTopLayout = new VBox();
+
+        //vleftCornerTopLayout.setBorder(new Border(new BorderStroke(Color.BLACK,
+        //BorderStrokeStyle.SOLID, CornerRadii.EMPTY, BorderWidths.DEFAULT)));
+
+
+
+        leftCornerLayout.add(vleftCornerTopLayout, 0, 0);
+
 
         GridPane rightcornerGridLayout = new GridPane();
         rightcornerGridLayout.setVgap(10);
@@ -57,7 +67,8 @@ public class EntryPage
 
         int numberOfEntries = recordEntries.size();
 
-        Button entries[] = new Button[numberOfEntries];
+        Label entries[] = new Label[numberOfEntries];
+        Button viewButtons[] = new Button[numberOfEntries];
         Button deleteRecord = new Button("Delete Record");
         Button backButton = new Button("Back");
         Button member = new Button("Members");
@@ -92,14 +103,17 @@ public class EntryPage
         {
             int id= recordEntries.get(i);
             String entryName= EntryData.getEntryName(id);
-            entries[i] = new Button(entryName);
-            entries[i].setPrefSize(200, 40);
+
+            entries[i] = new Label(entryName);
+            entries[i].setPrefSize(100, 40);
+
+            viewButtons[i] = new Button("View");
 
             if(EntryData.isCashIn(id) == true)
             {
                 String t = String.valueOf(EntryData.getEntryAmount(id));
                 cashAmount[i] = new Label(t);
-                cashAmount[i].setPrefSize(80, 40);
+                cashAmount[i].setPrefSize(80, 20);
                 cashAmount[i].setTextFill(Color.color(0, .5, 0));
             }
 
@@ -107,7 +121,7 @@ public class EntryPage
             {
                 String t = String.valueOf(EntryData.getEntryAmount(id));
                 cashAmount[i] = new Label(t);
-                cashAmount[i].setPrefSize(80, 40);
+                cashAmount[i].setPrefSize(80, 20);
                 cashAmount[i].setTextFill(Color.color(.5, 0, 0));
                 //cashType[i].setStyle("-fx-background-color: #ff0000; ");
             }
@@ -115,10 +129,10 @@ public class EntryPage
             String temptag = EntryData.getEntryTag(id);
 
             tags[i] = new Label(temptag);
-            tags[i].setPrefSize(150, 40);
+            tags[i].setPrefSize(80, 40);
             tags[i].setTextFill(Color.color(0, 0, .8));
 
-            entries[i].setOnAction(e -> {
+            viewButtons[i].setOnAction(e -> {
                 EntryData.setCurrentEntry(id);
                 EntryView.display(EntryWindow);
             });
@@ -130,18 +144,14 @@ public class EntryPage
         recordName.setFont(new Font("Arial", 30));
         recordName.setTextFill(Color.color(.8, .8, 0));
 
-        leftCornerLayout.add(totalCashIn, 0, 0);
-        leftCornerLayout.add(cashInAmount, 0, 1);
-        leftCornerLayout.add(totalCashOut, 0, 2);
-        leftCornerLayout.add(cashOutAmount, 0, 3);
-        leftCornerLayout.add(netCash, 0, 4);
-        leftCornerLayout.add(netAmount, 0, 5);
+        vleftCornerTopLayout.getChildren().addAll(totalCashIn, cashInAmount, totalCashOut, cashOutAmount, netCash, netAmount);
 
         for(int i = 0; i < numberOfEntries; i++)
         {
             EntryLayout.add(entries[i], 0, i+2);
             EntryLayout.add(cashAmount[i], 1, i+2);
             EntryLayout.add(tags[i], 2, i+2);
+            EntryLayout.add(viewButtons[i], 3, i+2);
         }
 
         if(RecordData.hasDeleteRecordAccess(RecordData.getCurrentRecord(), UserData.getCurrentUser()))
@@ -154,7 +164,7 @@ public class EntryPage
             });
         }
 
-         if(RecordData.isIndividual(RecordData.getCurrentRecord()) == false)
+        if(RecordData.isIndividual(RecordData.getCurrentRecord()) == false)
         {
             Button addUser = new Button("Add User");
             rightcornerGridLayout.add(addUser,0, 3);
@@ -215,6 +225,7 @@ public class EntryPage
 
         entryTopLayout.add(intro, 0, 0);
         entryTopLayout.add(recordName, 1, 0);
+
 
 
         BorderPane finalEntryLayout = new BorderPane();

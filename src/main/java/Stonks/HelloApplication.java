@@ -15,8 +15,6 @@ public class HelloApplication extends Application
 
         launch(args);
         Bonk();
-
-
     }
 
     public void start(Stage primaryStage) throws Exception
