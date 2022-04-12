@@ -15,7 +15,6 @@ public class HelloApplication extends Application
 
         DB.Connector();
         launch(args);
-        //test();
     }
 
     public void start(Stage primaryStage) throws Exception

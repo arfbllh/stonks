@@ -19,11 +19,13 @@ public class DB {
     }
 
     static  boolean isDBConnected() throws SQLException {
+        if(!connection.isClosed()) Connector();
         return !connection.isClosed();
     }
     static Connection returnConnection(){
         return connection;
     }
+
 
 
 
