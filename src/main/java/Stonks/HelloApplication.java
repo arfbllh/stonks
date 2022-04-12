@@ -4,17 +4,18 @@ import Database.*;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
-import java.io.IOException;
 import java.sql.SQLException;
 
 import Database.DB;
+import User.*;
 
 public class HelloApplication extends Application
 {
     public static void main(String[] args) throws SQLException {
 
-        //launch(args);
-        test();
+        DB.Connector();
+        launch(args);
+        //test();
     }
 
     public void start(Stage primaryStage) throws Exception

@@ -6,8 +6,6 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
-import javafx.scene.effect.Blend;
-import javafx.scene.effect.Bloom;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.paint.Color;
@@ -15,6 +13,7 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 import java.util.Vector;
+import User.*;
 
 public class RecordPage
 {

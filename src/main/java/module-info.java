@@ -12,4 +12,5 @@ module com.example.stonks {
 
     opens com.example.stonks to javafx.fxml;
     exports Stonks;
+    exports User;
 }

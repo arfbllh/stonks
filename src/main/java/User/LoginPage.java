@@ -1,5 +1,7 @@
-package Stonks;
+package User;
 
+import Stonks.MenuPage;
+import Stonks.UserData;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -9,7 +11,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
-
+import Database.*;
 public class LoginPage
 {
     public static void display()
@@ -35,11 +37,10 @@ public class LoginPage
         login.setOnAction(e -> {
             String tempUser = userName.getText();
             String tempPass = passCode.getText();
-
-            if(UserData.checkUser(tempUser, tempPass) == true)
+            int userId = UserInfo.authUser(tempUser, tempPass);
+            if(userId > 0)
             {
                 loginWindow.close();
-                int userId= UserData.getUserId(tempUser,tempPass);
                 UserData.setCurrentUser(userId);
                 MenuPage.display();
             }

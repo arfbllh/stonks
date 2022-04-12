@@ -1,12 +1,13 @@
-package Stonks;
+package User;
 
+import Database.UserInfo;
+import Stonks.UserData;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class RegisterPage
@@ -46,9 +47,19 @@ public class RegisterPage
         });
 
         register.setOnAction(e -> {
-            UserData.addUser(userName.getText(), passCode.getText(), accountType.getValue());
-            registerWindow.close();
-            LoginPage.display();
+            int k = UserInfo.addUser(userName.getText(), passCode.getText());
+            if(k == 1){
+                System.out.println("success adding user");
+                registerWindow.close();
+                LoginPage.display();
+            }
+            else if(k == -3){
+                System.out.println("User already exists");
+            }
+            else if(k == -1 || k == -2){
+                System.out.println("UserName or Password null");
+            }
+
         });
 
         registerLayout.add(gobacktoLogin, 0, 0);

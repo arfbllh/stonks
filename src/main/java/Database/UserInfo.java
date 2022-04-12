@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import static Database.DB.*;
 
 public class UserInfo {
-    public static boolean authUser(String userName, String pass) throws SQLException {
+    public static int authUser(String userName, String pass)  {
         PreparedStatement statement = null;
         ResultSet resultSet = null;
         String query = "select * from UserInfo where name = ? and password = ?";
@@ -17,15 +17,15 @@ public class UserInfo {
             statement.setString(1, userName);
             statement.setString(2, pass);
             resultSet = statement.executeQuery();
-            return resultSet.next();
+            if(resultSet.next())
+                return resultSet.getInt("id");
+            else
+                return 0;
         }
         catch (SQLException e){
-            return false;
+            return 0;
         }
-        finally {
-            statement.close();
-            resultSet.close();
-        }
+
     }
     public static int addUser(String name, String password) {
         if(name == "")
@@ -73,4 +73,5 @@ public class UserInfo {
             resultSet.close();
         }
     }
+
 }
