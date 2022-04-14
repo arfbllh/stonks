@@ -5,9 +5,11 @@ import javafx.application.Application;
 import javafx.stage.Stage;
 
 import java.sql.SQLException;
+import java.util.Vector;
 
 import Database.DB;
 import User.*;
+import javafx.util.Pair;
 
 public class HelloApplication extends Application
 {
@@ -15,6 +17,8 @@ public class HelloApplication extends Application
 
         DB.Connector();
         launch(args);
+
+
     }
 
     public void start(Stage primaryStage) throws Exception

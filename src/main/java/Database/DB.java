@@ -26,6 +26,20 @@ public class DB {
         return connection;
     }
 
+    public static boolean isTableExits(String name){
+        String query = "SELECT name from sqlite_master where type = 'table' and name = '" + name + "'";
+        PreparedStatement statement = null;
+        try {
+            statement = (PreparedStatement) connection.prepareStatement(query);
+            ResultSet resultSet = statement.executeQuery();
+            return resultSet.next();
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
 
 
 

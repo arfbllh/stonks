@@ -1,5 +1,6 @@
 package User;
 
+import Database.RecordAccess;
 import Database.UserInfo;
 import Stonks.UserData;
 import javafx.geometry.Insets;
@@ -50,6 +51,7 @@ public class RegisterPage
             int k = UserInfo.addUser(userName.getText(), passCode.getText());
             if(k == 1){
                 System.out.println("success adding user");
+                RecordAccess.createAccessTable(userName.getText());
                 registerWindow.close();
                 LoginPage.display();
             }

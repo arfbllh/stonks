@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dataSource name="stonks">
-  <database-model serializer="dbm" dbms="SQLITE" family-id="SQLITE" format-version="4.32">
+  <database-model serializer="dbm" dbms="SQLITE" family-id="SQLITE" format-version="4.38">
     <root id="1">
       <ServerVersion>3.36.0</ServerVersion>
     </root>
@@ -1284,59 +1284,76 @@
     <argument id="472" parent="162">
       <Position>1</Position>
     </argument>
-    <table id="473" parent="163" name="sqlite_master">
+    <table id="473" parent="163" name="arif"/>
+    <table id="474" parent="163" name="pirate"/>
+    <table id="475" parent="163" name="sqlite_master">
       <System>1</System>
     </table>
-    <table id="474" parent="163" name="sqlite_sequence">
+    <table id="476" parent="163" name="sqlite_sequence">
       <System>1</System>
     </table>
-    <table id="475" parent="163" name="userInfo"/>
-    <column id="476" parent="473" name="type">
+    <table id="477" parent="163" name="userInfo"/>
+    <column id="478" parent="473" name="RecordId">
+      <DataType>int|0s</DataType>
+      <Position>1</Position>
+    </column>
+    <column id="479" parent="473" name="type">
+      <DataType>int|0s</DataType>
+      <Position>2</Position>
+    </column>
+    <column id="480" parent="474" name="recordId">
+      <DataType>int|0s</DataType>
+      <Position>1</Position>
+    </column>
+    <column id="481" parent="474" name="type">
+      <DataType>int|0s</DataType>
+      <Position>2</Position>
+    </column>
+    <column id="482" parent="475" name="type">
       <DataType>text|0s</DataType>
       <Position>1</Position>
     </column>
-    <column id="477" parent="473" name="name">
+    <column id="483" parent="475" name="name">
       <DataType>text|0s</DataType>
       <Position>2</Position>
     </column>
-    <column id="478" parent="473" name="tbl_name">
+    <column id="484" parent="475" name="tbl_name">
       <DataType>text|0s</DataType>
       <Position>3</Position>
     </column>
-    <column id="479" parent="473" name="rootpage">
+    <column id="485" parent="475" name="rootpage">
       <DataType>int|0s</DataType>
       <Position>4</Position>
     </column>
-    <column id="480" parent="473" name="sql">
+    <column id="486" parent="475" name="sql">
       <DataType>text|0s</DataType>
       <Position>5</Position>
     </column>
-    <column id="481" parent="474" name="name">
+    <column id="487" parent="476" name="name">
       <Position>1</Position>
     </column>
-    <column id="482" parent="474" name="seq">
+    <column id="488" parent="476" name="seq">
       <Position>2</Position>
     </column>
-    <column id="483" parent="475" name="id">
+    <column id="489" parent="477" name="id">
+      <AutoIncrement>1</AutoIncrement>
       <DataType>integer|0s</DataType>
       <NotNull>1</NotNull>
       <Position>1</Position>
-      <SequenceIdentity>null</SequenceIdentity>
     </column>
-    <column id="484" parent="475" name="name">
+    <column id="490" parent="477" name="name">
       <DataType>varchar|0s</DataType>
       <Position>2</Position>
     </column>
-    <column id="485" parent="475" name="password">
+    <column id="491" parent="477" name="password">
       <DataType>varchar|0s</DataType>
       <Position>3</Position>
     </column>
-    <index id="486" parent="475" name="userInfo_id_uindex">
+    <index id="492" parent="477" name="userInfo_id_uindex">
       <ColNames>id</ColNames>
-      <ColumnCollations></ColumnCollations>
       <Unique>1</Unique>
     </index>
-    <key id="487" parent="475" name="userInfo_pk">
+    <key id="493" parent="477" name="userInfo_pk">
       <ColNames>id</ColNames>
       <Primary>1</Primary>
       <UnderlyingIndexName>userInfo_id_uindex</UnderlyingIndexName>
