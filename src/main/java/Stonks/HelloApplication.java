@@ -1,15 +1,13 @@
 package Stonks;
 
 import Database.*;
+import Stonks.Pages.LoginPage;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
 import java.sql.SQLException;
-import java.util.Vector;
 
 import Database.DB;
-import User.*;
-import javafx.util.Pair;
 
 public class HelloApplication extends Application
 {

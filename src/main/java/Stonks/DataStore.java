@@ -5,7 +5,7 @@ import java.util.Vector;
 
 public class DataStore<T> {
 
-    Vector<T> init(String FileName){
+    public Vector<T> init(String FileName){
 
         try{
             File fr = new File(FileName);
@@ -22,7 +22,7 @@ public class DataStore<T> {
         }
 
     }
-    void close(String FileName, Vector<T> vec){
+    public void close(String FileName, Vector<T> vec){
         try{
             File fr = new File(FileName);
             fr.createNewFile();
