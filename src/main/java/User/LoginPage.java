@@ -37,6 +37,7 @@ public class LoginPage
         login.setOnAction(e -> {
             String tempUser = userName.getText();
             String tempPass = passCode.getText();
+            //used database function here
             int userId = UserInfo.authUser(tempUser, tempPass);
             if(userId > 0)
             {
