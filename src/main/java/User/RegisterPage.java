@@ -48,6 +48,7 @@ public class RegisterPage
         });
 
         register.setOnAction(e -> {
+            //used database function here
             int k = UserInfo.addUser(userName.getText(), passCode.getText());
             if(k == 1){
                 System.out.println("success adding user");
