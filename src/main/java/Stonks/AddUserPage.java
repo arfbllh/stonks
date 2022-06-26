@@ -69,10 +69,10 @@ public class AddUserPage
         });
 
         confirm.setOnAction(e -> {
-           for(int i=0;i<addedUsers.size();i++){
-               int userId= UserData.getUserIdByName(addedUsers.get(i));
-               UserData.addUserInvite(UserData.getCurrentUser(),userId,RecordData.getCurrentRecord());
-           }
+            for(int i=0;i<addedUsers.size();i++){
+                int userId= UserData.getUserIdByName(addedUsers.get(i));
+                UserData.addUserInvite(UserData.getCurrentUser(),userId,RecordData.getCurrentRecord());
+            }
 
             addedUsers.clear();
 
