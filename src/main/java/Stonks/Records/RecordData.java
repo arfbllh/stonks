@@ -143,9 +143,9 @@ public class RecordData {
 
         recordType = RecordInfo.restore1();
         records = RecordInfo.restore2(recordType);
-        System.out.println("here = " + recordType.size() + " " + records.size());
-        for(Record rec : records) System.out.println(rec.toString());
-        System.out.println(recordType.toString());
+        //System.out.println("here = " + recordType.size() + " " + records.size());
+        //for(Record rec : records) System.out.println(rec.toString());
+        //System.out.println(recordType.toString());
 
 
     }

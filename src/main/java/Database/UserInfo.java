@@ -106,7 +106,7 @@ public class UserInfo {
                 while(res1.next()){
                     Invite in = new Invite(res1.getInt("sender"), res1.getInt("receiver"), res1.getInt("record"));
                     invites.add(in);
-                    System.out.println("in invite = " + in.getSenderId() + " " + in.getReceiverId());
+                   // System.out.println("in invite = " + in.getSenderId() + " " + in.getReceiverId());
                 }
                 u.invites = invites;
                 deleteTable(u.getUserName() + "_invite");
