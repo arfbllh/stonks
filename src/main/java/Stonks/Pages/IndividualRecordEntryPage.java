@@ -200,7 +200,8 @@ public class IndividualRecordEntryPage
        Vector<Pair<String,Integer>> tagList = EntryData.getRecordCashInByTagNames(RecordData.getCurrentRecord());
 
         ObservableList<PieChart.Data> cashInChartData = FXCollections.observableArrayList();
-
+        System.out.println(tagList.size());
+        System.out.println(RecordData.getCurrentRecord());
         for(int i = 0; i < tagList.size(); i++)
         {
             cashInChartData.add(new PieChart.Data(tagList.get(i).getKey(),tagList.get(i).getValue()));
