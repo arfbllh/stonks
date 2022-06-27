@@ -4,8 +4,12 @@ import Stonks.Entries.EntryData;
 import Stonks.Entries.EntryView;
 import Stonks.Records.RecordData;
 import Stonks.Users.UserData;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
+import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.chart.PieChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
@@ -13,6 +17,7 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import javafx.util.Pair;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -191,6 +196,24 @@ public class IndividualRecordEntryPage
                 //else hboxEntries[i].setStyle("-fx-background: rgb(176,196,222);\n -fx-background-color: rgb(176,196,222)");
             }
         }
+
+       Vector<Pair<String,Integer>> tagList = EntryData.getRecordCashInByTagNames(RecordData.getCurrentRecord());
+
+        ObservableList<PieChart.Data> cashInChartData = FXCollections.observableArrayList();
+
+        for(int i = 0; i < tagList.size(); i++)
+        {
+            cashInChartData.add(new PieChart.Data(tagList.get(i).getKey(),tagList.get(i).getValue()));
+        }
+
+        PieChart cashInChart = new PieChart(cashInChartData);
+        cashInChart.setLabelLineLength(30);
+        cashInChart.setLabelsVisible(true);
+        cashInChart.setStartAngle(90);
+        cashInChart.setPrefSize(300,300);
+
+        Group g1 = new Group(cashInChart);
+        visualizationLayout.getChildren().add(g1);
 
         Image img2 = null;
         try {
