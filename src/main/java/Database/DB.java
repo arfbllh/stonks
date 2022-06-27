@@ -73,8 +73,9 @@ public class DB {
     public static void close(){
         UserData.saveUsers();
         EntryData.close();
-        RecordData.close();
         CountData.close();
+        RecordData.close();
+
     }
 
 

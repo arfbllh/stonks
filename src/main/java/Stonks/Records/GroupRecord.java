@@ -1,5 +1,6 @@
 package Stonks.Records;
 
+import Database.RecordInfo;
 import Stonks.DataStore;
 import Stonks.MemberConstants;
 
@@ -138,14 +139,11 @@ public class GroupRecord extends IndRecord {
         int index= getUserIdIndex(userId);
         users.remove(index);
     }
-    static void init(){
-        DataStore<RecordMember> obj = new DataStore<>();
-        users = obj.init("groupRecord");
-
-
-    }
-    static void close(){
-        DataStore<RecordMember> obj = new DataStore<>();
-        obj.close("groupRecord", users);
-    }
+//    static void init(){
+//        RecordInfo.restore1();
+//
+//    }
+//    static void close(){
+//
+//    }
 }

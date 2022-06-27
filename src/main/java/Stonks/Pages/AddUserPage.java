@@ -11,7 +11,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
-import sun.awt.X11.InfoWindow;
+//import sun.awt.X11.InfoWindow;
 
 import java.util.Vector;
 

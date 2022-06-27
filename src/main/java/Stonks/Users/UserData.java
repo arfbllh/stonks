@@ -110,7 +110,7 @@ public class UserData implements Serializable
 
     public static void retrieveUser()
     {
-        users = UserInfo.start();
+        users = UserInfo.init();
     }
     public static void saveUsers(){
         UserInfo.close(users);

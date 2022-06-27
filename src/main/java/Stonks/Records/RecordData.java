@@ -143,6 +143,7 @@ public class RecordData {
 
         recordType = RecordInfo.restore1();
         records = RecordInfo.restore2(recordType);
+        System.out.println("here = " + recordType.size() + " " + records.size());
 
 
     }

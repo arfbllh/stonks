@@ -48,16 +48,20 @@ public class RecordInfo {
     public static Vector<Integer> restore1() {
         Vector<Integer> vec = new Vector<>();
         if(!isTableExits("RecordType")) return vec;
-        String command = "select *from RecordType";
         try{
+            String command = "select * from RecordType";
             PreparedStatement st = connection.prepareStatement(command);
             ResultSet res = st.getResultSet();
             while(res.next()){
-                vec.add(res.getInt(1));
+                vec.add(res.getInt(2));
+                System.out.println("res = " + res.getInt(2));
             }
+            st.close();
+            res.close();
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        System.out.println(vec.toString());
         return vec;
     }
 
@@ -80,6 +84,7 @@ public class RecordInfo {
                     rec = tmp;
                 }
                 vec.add(rec);
+                System.out.println("size = " +  vec.size());
             }
             int i = 0;
             for(Record r : vec){
@@ -101,6 +106,7 @@ public class RecordInfo {
                 gr.users = tmp;
                 st.close();
                 res.close();
+                i++;
             }
         } catch (SQLException e) {
             throw new RuntimeException(e);
@@ -109,10 +115,9 @@ public class RecordInfo {
     }
 
     public static void save1(Vector<Integer> recordType) {
-        Vector<Integer> vec = new Vector<>();
         if(!isTableExits("RecordType")){
             try{
-                String command = "create table RecordType(id int not null primary key)";
+                String command = "create table RecordType(id integer not null primary key autoincrement, type int)";
                 PreparedStatement st = connection.prepareStatement(command);
                 st.executeUpdate();
                 st.close();
@@ -120,9 +125,9 @@ public class RecordInfo {
                e.printStackTrace();
             }
         }
-        for(int u : vec){
+        for(int u : recordType){
             try{
-                String command = "insert into RecordType(id) values(?)";
+                String command = "insert into RecordType(type) values(?)";
                 PreparedStatement st = connection.prepareStatement(command);
                 st.setString(1, String.valueOf(u));
                 st.executeUpdate();
@@ -159,7 +164,7 @@ public class RecordInfo {
                 if(u == 1){
                     GroupRecord gr = (GroupRecord) rec;
                     int id = rec.getId();
-                    if(isTableExits("group" + rec.getId())){
+                    if(!isTableExits("group" + rec.getId())){
                         command = "create table group" + rec.getId()+ "(id int, type int)";
                         st = connection.prepareStatement(command);
                         st.executeUpdate();
