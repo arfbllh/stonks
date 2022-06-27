@@ -12,52 +12,6 @@ import Stonks.Users.Invite;
 import Stonks.Users.User;
 
 public class UserInfo {
-    public static int authUser(String userName, String pass)  {
-        PreparedStatement statement = null;
-        ResultSet resultSet = null;
-        String query = "select * from UserInfo where name = ? and password = ?";
-        try {
-            statement = connection.prepareStatement(query);
-            statement.setString(1, userName);
-            statement.setString(2, pass);
-            resultSet = statement.executeQuery();
-            if(resultSet.next())
-                return resultSet.getInt("id");
-            else
-                return 0;
-        }
-        catch (SQLException e){
-            return 0;
-        }
-
-    }
-    public static int addUser(String name, String password) {
-        if(name == "")
-            return -1;
-        else if(password == "")
-            return -2;
-
-        String command = "INSERT INTO UserInfo(name,password)" +  "VALUES(?,?)";
-        PreparedStatement statement = null;
-        try {
-            if(userExists(name))
-                return -3;
-            Connection connection = DB.returnConnection();
-
-            statement = connection.prepareStatement(command);
-            statement.setString(1, name);
-            statement.setString(2, password);
-            int affectedRows = statement.executeUpdate();
-            if(affectedRows > 0){
-                return 1;
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return -4;
-        }
-        return 0;
-
-    }
 
     static boolean userExists(String userName) throws SQLException {
         PreparedStatement statement = null;
@@ -97,8 +51,6 @@ public class UserInfo {
             res.close();
             for(User u : tmp){
                 if(!isTableExits(u.getUserName() + "_invite")) continue;
-
-                System.out.println(u.getUserName() + " invite");
                 command = "select * from " + u.getUserName() + "_invite";
                 PreparedStatement st = connection.prepareStatement(command);
                 ResultSet res1 = st.executeQuery();
