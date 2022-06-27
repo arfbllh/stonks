@@ -15,7 +15,6 @@ public class HelloApplication extends Application
 
         DB.Connector();
         launch(args);
-
         DB.close();
     }
     //Program start
@@ -24,16 +23,5 @@ public class HelloApplication extends Application
         LoginPage.display();
     }
 
-    static void test(){
-
-        DB.Connector();
-        try {
-            int k = UserInfo.addUser("a", "b");
-            System.out.println(k);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-
-    }
 
 }

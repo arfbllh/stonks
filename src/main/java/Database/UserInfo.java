@@ -12,52 +12,6 @@ import Stonks.Users.Invite;
 import Stonks.Users.User;
 
 public class UserInfo {
-    public static int authUser(String userName, String pass)  {
-        PreparedStatement statement = null;
-        ResultSet resultSet = null;
-        String query = "select * from UserInfo where name = ? and password = ?";
-        try {
-            statement = connection.prepareStatement(query);
-            statement.setString(1, userName);
-            statement.setString(2, pass);
-            resultSet = statement.executeQuery();
-            if(resultSet.next())
-                return resultSet.getInt("id");
-            else
-                return 0;
-        }
-        catch (SQLException e){
-            return 0;
-        }
-
-    }
-    public static int addUser(String name, String password) {
-        if(name == "")
-            return -1;
-        else if(password == "")
-            return -2;
-
-        String command = "INSERT INTO UserInfo(name,password)" +  "VALUES(?,?)";
-        PreparedStatement statement = null;
-        try {
-            if(userExists(name))
-                return -3;
-            Connection connection = DB.returnConnection();
-
-            statement = connection.prepareStatement(command);
-            statement.setString(1, name);
-            statement.setString(2, password);
-            int affectedRows = statement.executeUpdate();
-            if(affectedRows > 0){
-                return 1;
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-            return -4;
-        }
-        return 0;
-
-    }
 
     static boolean userExists(String userName) throws SQLException {
         PreparedStatement statement = null;
@@ -90,15 +44,13 @@ public class UserInfo {
             statement = connection.prepareStatement(command);
             ResultSet res = statement.executeQuery();
             while(res.next()){
-                User u = new User(res.getString("name"), res.getString("pass"), res.getInt("type") == 1, res.getInt("id"));
+                User u = new User(res.getString("name"), res.getString("pass"), true, res.getInt("id"));
                 tmp.add(u);
             }
             statement.close();
             res.close();
             for(User u : tmp){
                 if(!isTableExits(u.getUserName() + "_invite")) continue;
-
-                System.out.println(u.getUserName() + " invite");
                 command = "select * from " + u.getUserName() + "_invite";
                 PreparedStatement st = connection.prepareStatement(command);
                 ResultSet res1 = st.executeQuery();
@@ -106,7 +58,7 @@ public class UserInfo {
                 while(res1.next()){
                     Invite in = new Invite(res1.getInt("sender"), res1.getInt("receiver"), res1.getInt("record"));
                     invites.add(in);
-                    System.out.println(in.getSenderId() + " " + in.getReceiverId());
+                   // System.out.println("in invite = " + in.getSenderId() + " " + in.getReceiverId());
                 }
                 u.invites = invites;
                 deleteTable(u.getUserName() + "_invite");
@@ -115,7 +67,7 @@ public class UserInfo {
 
 
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
 
         deleteTable("UserInfo");
@@ -124,7 +76,7 @@ public class UserInfo {
 
     public static void close(Vector<User> vec){
         PreparedStatement statement = null;
-        String command = "CREATE TABLE UserInfo(id integer not null primary key autoincrement, name varchar, pass varchar, type int)";
+        String command = "CREATE TABLE UserInfo(no integer not null primary key autoincrement, id int, name varchar, pass varchar)";
         try {
             statement = connection.prepareStatement(command);
             statement.executeUpdate();
@@ -133,19 +85,17 @@ public class UserInfo {
             e.printStackTrace();
         }
         for(User u : vec){
-            command = "insert into UserInfo(name, pass, type) VALUES(?, ?, ?);";
+            command = "insert into UserInfo(id, name, pass) VALUES(?, ?, ?);";
             try{
                 statement = connection.prepareStatement(command);
-                statement.setString(1, u.getUserName());
-                statement.setString(2, u.getPassCode());
-                int k = 0;
-                if(u.isIndividual()) k = 1;
-                statement.setString(3, String.valueOf(k));
+                statement.setString(1, String.valueOf(u.getId()));
+                statement.setString(2, u.getUserName());
+                statement.setString(3, u.getPassCode());
                 statement.executeUpdate();
                 statement.close();
                 Vector<Invite> tmp = u.getInvites();
                 if(!isTableExits(u.getUserName() + "_invite")){
-                    command = "CREATE TABLE " + u.getUserName() + "_invite(sender int, receiver int, record int)";
+                    command = "CREATE TABLE " + u.getUserName() + "_invite(id integer primary key autoincrement, sender int, receiver int, record int)";
                     statement = connection.prepareStatement(command);
                     statement.executeUpdate();
                 }

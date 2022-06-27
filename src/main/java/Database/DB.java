@@ -65,7 +65,7 @@ public class DB {
     }
 
     static void start(){
-        UserData.retrieveUser();
+        UserData.init();
         EntryData.init();
         CountData.init();
         RecordData.init();

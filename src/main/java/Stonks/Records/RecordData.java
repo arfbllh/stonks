@@ -2,7 +2,7 @@ package Stonks.Records;
 
 import Database.RecordInfo;
 import Stonks.CountData;
-import Stonks.DataStore;
+
 
 import java.util.Vector;
 
@@ -146,7 +146,9 @@ public class RecordData {
 
         recordType = RecordInfo.restore1();
         records = RecordInfo.restore2(recordType);
-        System.out.println("here = " + recordType.size() + " " + records.size());
+        //System.out.println("here = " + recordType.size() + " " + records.size());
+        //for(Record rec : records) System.out.println(rec.toString());
+        //System.out.println(recordType.toString());
 
 
     }

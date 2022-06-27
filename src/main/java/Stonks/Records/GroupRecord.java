@@ -1,13 +1,13 @@
 package Stonks.Records;
 
 import Database.RecordInfo;
-import Stonks.DataStore;
+
 import Stonks.MemberConstants;
 
 import java.util.Vector;
 
 public class GroupRecord extends IndRecord {
-    public static Vector<RecordMember> users;
+    public Vector<RecordMember> users;
     public GroupRecord(String name, int userId, int recordId) {
         super(name,userId,recordId);
         users= new Vector<>();
@@ -140,11 +140,15 @@ public class GroupRecord extends IndRecord {
         int index= getUserIdIndex(userId);
         users.remove(index);
     }
-//    static void init(){
-//        RecordInfo.restore1();
-//
-//    }
-//    static void close(){
-//
-//    }
+
+    @Override
+    public String toString() {
+        return "GroupRecord{" +
+                "users=" + users +
+                ", entries=" + entries +
+                ", name='" + name + '\'' +
+                ", recordId=" + recordId +
+                ", creatorId=" + creatorId +
+                '}';
+    }
 }

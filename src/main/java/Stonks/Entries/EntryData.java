@@ -1,8 +1,7 @@
 package Stonks.Entries;
 
-import Database.EntryManage;
+import Database.*;
 import Stonks.CountData;
-import Stonks.DataStore;
 import javafx.util.Pair;
 
 import java.util.HashSet;

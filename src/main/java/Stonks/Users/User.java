@@ -1,5 +1,7 @@
 package Stonks.Users;
 
+import Stonks.CountData;
+
 import java.io.Serializable;
 import java.util.Vector;
 
@@ -14,12 +16,13 @@ public class User implements Serializable {
         this.passCode= passCode;
         this.isPersonal= isIndividual;
         invites= new Vector<>();
-        this.userId= userId;
+        this.userId = userId;
     }
 
     public User(String userName, String passCode) {
         this.userName = userName;
         this.passCode = passCode;
+        this.userId = CountData.userCount++;
     }
 
     public int getId(){
@@ -46,7 +49,6 @@ public class User implements Serializable {
     public Vector<Invite> getInvites(){
         return invites;
     }
-
     @Override
     public String toString() {
         return "User{" +
