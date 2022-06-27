@@ -17,35 +17,6 @@ public class RecordInfo {
     static Connection connection = DB.returnConnection();
 
 
-    static void createRecord(String name){
-        String command = "CREATE TABLE tab" + name + "(id integer not null primary key autoincrement, name varchar,  amount BIGINT, tag varchar, type int)";
-        PreparedStatement statement = null;
-        try{
-            connection = DB.returnConnection();
-            statement = (PreparedStatement) connection.prepareStatement(command);
-            statement.executeUpdate();
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-            System.exit(1);
-
-        }
-    }
-    public static void deleteRecord(int recordId){
-        String command = "DROP TABLE tab" + recordId;
-        PreparedStatement statement = null;
-        try{
-            connection = DB.returnConnection();
-            statement = (PreparedStatement) connection.prepareStatement(command);
-            statement.executeUpdate();
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-            System.exit(1);
-
-        }
-    }
-
     public static Vector<Integer> restore1() {
         Vector<Integer> vec = new Vector<>();
         if(!isTableExits("RecordType")) return vec;
@@ -56,7 +27,6 @@ public class RecordInfo {
             while(res.next()){
                 vec.add(res.getInt(2));
             }
-            System.out.println(vec.toString());
             st.close();
             res.close();
         } catch (SQLException e) {
@@ -117,9 +87,7 @@ public class RecordInfo {
                 gr.users = tmp;
                 st.close();
                 res.close();
-                System.out.println("group" + gr.getId());
                 deleteTable("group" + rec.getId());
-                System.out.println(gr.users.toString());
                 vec2.add(gr);
             }
         } catch (SQLException e) {
