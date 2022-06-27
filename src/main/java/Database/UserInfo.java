@@ -90,7 +90,7 @@ public class UserInfo {
             statement = connection.prepareStatement(command);
             ResultSet res = statement.executeQuery();
             while(res.next()){
-                User u = new User(res.getString("name"), res.getString("pass"), res.getInt("type") == 1, res.getInt("id"));
+                User u = new User(res.getString("name"), res.getString("pass"), true, res.getInt("id"));
                 tmp.add(u);
             }
             statement.close();
@@ -106,7 +106,7 @@ public class UserInfo {
                 while(res1.next()){
                     Invite in = new Invite(res1.getInt("sender"), res1.getInt("receiver"), res1.getInt("record"));
                     invites.add(in);
-                    System.out.println(in.getSenderId() + " " + in.getReceiverId());
+                    System.out.println("in invite = " + in.getSenderId() + " " + in.getReceiverId());
                 }
                 u.invites = invites;
                 deleteTable(u.getUserName() + "_invite");
@@ -115,7 +115,7 @@ public class UserInfo {
 
 
         } catch (SQLException e) {
-            throw new RuntimeException(e);
+            e.printStackTrace();
         }
 
         deleteTable("UserInfo");
@@ -124,7 +124,7 @@ public class UserInfo {
 
     public static void close(Vector<User> vec){
         PreparedStatement statement = null;
-        String command = "CREATE TABLE UserInfo(id integer not null primary key autoincrement, name varchar, pass varchar, type int)";
+        String command = "CREATE TABLE UserInfo(no integer not null primary key autoincrement, id int, name varchar, pass varchar)";
         try {
             statement = connection.prepareStatement(command);
             statement.executeUpdate();
@@ -133,19 +133,17 @@ public class UserInfo {
             e.printStackTrace();
         }
         for(User u : vec){
-            command = "insert into UserInfo(name, pass, type) VALUES(?, ?, ?);";
+            command = "insert into UserInfo(id, name, pass) VALUES(?, ?, ?);";
             try{
                 statement = connection.prepareStatement(command);
-                statement.setString(1, u.getUserName());
-                statement.setString(2, u.getPassCode());
-                int k = 0;
-                if(u.isIndividual()) k = 1;
-                statement.setString(3, String.valueOf(k));
+                statement.setString(1, String.valueOf(u.getId()));
+                statement.setString(2, u.getUserName());
+                statement.setString(3, u.getPassCode());
                 statement.executeUpdate();
                 statement.close();
                 Vector<Invite> tmp = u.getInvites();
                 if(!isTableExits(u.getUserName() + "_invite")){
-                    command = "CREATE TABLE " + u.getUserName() + "_invite(sender int, receiver int, record int)";
+                    command = "CREATE TABLE " + u.getUserName() + "_invite(id integer primary key autoincrement, sender int, receiver int, record int)";
                     statement = connection.prepareStatement(command);
                     statement.executeUpdate();
                 }
