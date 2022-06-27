@@ -33,6 +33,11 @@ public class IndRecord extends Record {
         for(int i=0;i<entries.size();i++)System.out.println(entries.get(i));
     }
 
+    @Override
+    public boolean isUserAdded(int userId){
+        if(creatorId==userId)return true;
+        return false;
+    }
     public boolean hasReadAccess(int userId){
         if(creatorId==userId)return true;
         return false;

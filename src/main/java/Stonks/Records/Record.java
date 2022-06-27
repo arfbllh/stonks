@@ -13,6 +13,8 @@ public abstract class Record implements Serializable {
 
     abstract public void showEntries();
 
+    abstract public boolean isUserAdded(int userId);
+
     abstract public boolean hasReadAccess(int userId);
 
     abstract public boolean hasAddMemberAccess(int userId);

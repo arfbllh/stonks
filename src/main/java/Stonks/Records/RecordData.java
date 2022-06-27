@@ -37,7 +37,7 @@ public class RecordData {
         currentRecord= id;
     }
 
-    private static int getRecordIdIndex(int recordId){
+    public static int getRecordIdIndex(int recordId){
         for(int i=0;i<records.size();i++){
             if(records.get(i).getId()==recordId)return i;
         }
@@ -78,6 +78,10 @@ public class RecordData {
         return res;
     }
 
+    public static boolean isUserAdded(int recordId,int userId){
+        int index= getRecordIdIndex(recordId);
+        return records.get(index).isUserAdded(userId);
+    }
     public static void grantRecordAccess(int recordId,int userId){
         int index= getRecordIdIndex(recordId);
         records.get(index).grantAccess(userId);

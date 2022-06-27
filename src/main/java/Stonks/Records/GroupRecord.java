@@ -1,6 +1,7 @@
 package Stonks.Records;
 
 import Stonks.MemberConstants;
+import Stonks.Pages.MenuPage;
 
 import java.util.Vector;
 
@@ -23,7 +24,11 @@ public class GroupRecord extends IndRecord {
         }
         return -1;
     }
-
+    @Override
+    public boolean isUserAdded(int userId){
+        int index= getUserIdIndex(userId);
+        return index != -1;
+    }
     @Override
     public boolean hasReadAccess(int userId){
         for(int i=0;i<users.size();i++)if(userId==users.get(i).getUserId())return true;
@@ -136,7 +141,34 @@ public class GroupRecord extends IndRecord {
     @Override
     public void removeUser(int userId){
         int index= getUserIdIndex(userId);
+        if(users.get(index).getMemberType()==MemberConstants.ALPHA && getTotalAlpha()==1){
+            boolean promoted=false;
+            for(int i=0;i<users.size();i++){
+                if(users.get(i).getMemberType()== MemberConstants.SIGMA){
+                    promoteUser(users.get(i).getUserId());
+                    promoted=true;
+                    break;
+                }
+            }
+
+            for(int i=0;i<users.size();i++){
+                if(promoted)break;
+                if(users.get(i).getMemberType()== MemberConstants.OMEGA){
+                    promoteUser(users.get(i).getUserId());
+                    promoted=true;
+                    break;
+                }
+            }
+        }
         users.remove(index);
+    }
+
+    public int getTotalAlpha(){
+        int res=0;
+        for(int i=0; i<users.size(); i++){
+            if(users.get(i).getMemberType()==MemberConstants.ALPHA)res++;
+        }
+        return res;
     }
 
     @Override

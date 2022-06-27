@@ -1,6 +1,7 @@
 package Stonks.Users;
 
 import Stonks.CountData;
+import Stonks.Records.RecordData;
 
 import java.io.Serializable;
 import java.util.Vector;
@@ -47,6 +48,14 @@ public class User implements Serializable {
     }
 
     public Vector<Invite> getInvites(){
+        Vector<Invite> res= new Vector<>();
+
+        for(int i=0;i<invites.size();i++){
+            int recordId= invites.get(i).getRecordId();
+            if(RecordData.getRecordIdIndex(recordId)==-1)continue;
+            res.add(invites.get(i));
+        }
+        invites= res;
         return invites;
     }
     @Override

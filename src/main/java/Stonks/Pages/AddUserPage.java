@@ -89,7 +89,8 @@ public class AddUserPage
         int labelNo = 3;
 
         addUser.setOnAction(e -> {
-            if(UserData.getUserIdByName(addName.getText())!=-1) {
+            int invitee = UserData.getUserIdByName(addName.getText());
+            if(invitee != -1 && !RecordData.isUserAdded(RecordData.getCurrentRecord(),invitee) && !addedUsers.contains(addName.getText())) {
                 addedUsers.add(addName.getText());
                 addUserWindow.close();
             }

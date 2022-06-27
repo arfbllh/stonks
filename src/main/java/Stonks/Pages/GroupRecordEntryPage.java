@@ -92,6 +92,14 @@ public class GroupRecordEntryPage
             });
         }
 
+        else
+        {
+            deleteRecord.setOnAction(e -> {
+                WarningAlert warning = new WarningAlert("Unauthorized Access", "You do not have the access to delete record!");
+                warning.display();
+            });
+        }
+
         //informationLayout.setPadding(new Insets(10, 30, 10, 30));
         Label totalCashIn = new Label("Total Cash In:");
         totalCashIn.setPrefSize(200,30);
@@ -270,6 +278,14 @@ public class GroupRecordEntryPage
         {
             addUser.setOnAction( e -> {
                 AddUserPage.display(window.Window);
+            });
+        }
+
+        else
+        {
+            addUser.setOnAction(e -> {
+                WarningAlert warning = new WarningAlert("Unauthorized Access", "You do not have the access to add member!");
+                warning.display();
             });
         }
 
