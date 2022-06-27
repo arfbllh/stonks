@@ -264,8 +264,8 @@ public class GroupRecordEntryPage
 
         leave.setOnAction(e -> {
             RecordData.removeRecordMember(RecordData.getCurrentRecord(), UserData.getCurrentUser());
-            window.Window.close();
-            RecordPage.display();
+            //window.Window.close();
+            MenuPage.display();
         });
 
         if(RecordData.hasAddMemberAccess(RecordData.getCurrentRecord(), UserData.getCurrentUser()) == true)
