@@ -1,4 +1,4 @@
-package Database;
+package Stonks.Database;
 
 import Stonks.CountData;
 import Stonks.Entries.EntryData;
@@ -13,10 +13,10 @@ public class DB {
             Class.forName("org.sqlite.JDBC");
             connection = DriverManager.getConnection("jdbc:sqlite:src/main/resources/stonks.db");
             if(connection == null){
-                System.out.println("Database connection was not success");
+                System.out.println("Stonks.Database connection was not success");
             }
             else{
-                System.out.println("Database connection success");
+                System.out.println("Stonks.Database connection success");
             }
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();

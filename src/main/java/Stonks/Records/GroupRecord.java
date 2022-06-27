@@ -1,7 +1,5 @@
 package Stonks.Records;
 
-import Database.RecordInfo;
-
 import Stonks.MemberConstants;
 
 import java.util.Vector;

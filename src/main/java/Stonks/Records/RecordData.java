@@ -1,6 +1,6 @@
 package Stonks.Records;
 
-import Database.RecordInfo;
+import Stonks.Database.RecordInfo;
 import Stonks.CountData;
 
 

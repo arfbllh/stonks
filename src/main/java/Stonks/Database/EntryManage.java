@@ -1,10 +1,7 @@
-package Database;
+package Stonks.Database;
 
 import Stonks.Entries.Entry;
-import Stonks.Users.Invite;
-import Stonks.Users.User;
 
-import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -12,8 +9,8 @@ import java.sql.SQLException;
 import java.util.Arrays;
 import java.util.Vector;
 
-import static Database.DB.*;
-import static Database.DB.deleteTable;
+import static Stonks.Database.DB.*;
+import static Stonks.Database.DB.deleteTable;
 
 public class EntryManage {
     static Connection connection = DB.connection;

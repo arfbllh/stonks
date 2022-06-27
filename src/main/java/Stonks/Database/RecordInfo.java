@@ -1,4 +1,4 @@
-package Database;
+package Stonks.Database;
 
 import Stonks.Records.*;
 import Stonks.Records.Record;
@@ -9,8 +9,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Vector;
 
-import static Database.DB.deleteTable;
-import static Database.DB.isTableExits;
+import static Stonks.Database.DB.deleteTable;
+import static Stonks.Database.DB.isTableExits;
 
 
 public class RecordInfo {

@@ -1,6 +1,6 @@
 package Stonks.Entries;
 
-import Database.*;
+import Stonks.Database.*;
 import Stonks.CountData;
 import javafx.util.Pair;
 

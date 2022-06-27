@@ -1,12 +1,11 @@
-package Database;
+package Stonks.Database;
 
-import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.Vector;
 
-import static Database.DB.*;
+import static Stonks.Database.DB.*;
 
 import Stonks.Users.Invite;
 import Stonks.Users.User;
