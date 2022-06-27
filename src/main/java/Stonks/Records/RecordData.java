@@ -11,7 +11,8 @@ public class RecordData {
     private static Vector<Integer> recordType= new Vector<>();
     private static int currentRecord;
 
-    public static void addRecord(String name,int userId,boolean isIndividual){
+    public static boolean addRecord(String name,int userId,boolean isIndividual){
+        if(name.isEmpty())return false;
         Record rec;
         if(isIndividual) {
             IndRecord new_rec = new IndRecord(name, userId, CountData.recordCount++);
@@ -25,6 +26,7 @@ public class RecordData {
         }
 
         records.add(rec);
+        return true;
     }
 
     public static int getCurrentRecord(){
@@ -77,7 +79,8 @@ public class RecordData {
     }
 
     public static void grantRecordAccess(int recordId,int userId){
-        records.get(recordId).grantAccess(userId);
+        int index= getRecordIdIndex(recordId);
+        records.get(index).grantAccess(userId);
     }
 
     public static int getRecordMemberStatus(int recordId,int userId){

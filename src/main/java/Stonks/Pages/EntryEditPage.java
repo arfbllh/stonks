@@ -48,16 +48,16 @@ public class EntryEditPage
         tag.setText(EntryData.getEntryTag(EntryData.getCurrentEntry()));
 
         Button cancel = new Button("Cancel");
-        cancel.setPrefSize(140,100);
+        cancel.setPrefSize(250,100);
         cancel.setStyle("-fx-font: 15 Serif; -fx-base: #708090; ");
 
         Button update = new Button("Update Entry");
-        update.setPrefSize(180,100);
+        update.setPrefSize(250,100);
         update.setStyle("-fx-font: 15 Serif; -fx-base: #32CD32; ");
 
-        Button deleteEntry = new Button("Delete Entry");
-        deleteEntry.setPrefSize(180,100);
-        deleteEntry.setStyle("-fx-font: 15 Serif; -fx-base: #FF6347; ");
+        //Button deleteEntry = new Button("Delete Entry");
+        //deleteEntry.setPrefSize(180,100);
+        //deleteEntry.setStyle("-fx-font: 15 Serif; -fx-base: #FF6347; ");
 
         Label remarks = new Label("Current Remarks");
         remarks.setTextFill(Color.rgb(189,183,107));
@@ -71,13 +71,25 @@ public class EntryEditPage
             temp.add(tag.getText());
             int curEntry= EntryData.getCurrentEntry();
 
-            EntryData.addEntry(entry.getText(), temp, Integer.valueOf(amount.getText()),EntryData.isCashIn(curEntry), RecordData.getCurrentRecord() );
-            EntryData.deleteEntry(EntryData.getCurrentEntry());
+            int check= EntryData.addEntry(entry.getText(), temp, amount.getText(),EntryData.isCashIn(curEntry), RecordData.getCurrentRecord() );
+            if(check==-1){
+                WarningAlert warning = new WarningAlert("Invalid Input", "Fields can not be empty!");
+                warning.display();
+            }
+            else if(check==0){
+                WarningAlert warning = new WarningAlert("Invalid Amount", "Amount can not be non numeric!");
+                warning.display();
+            }
 
-            //prev.close();
-            if(type.equals("Individual")) IndividualRecordEntryPage.display();
-            else GroupRecordEntryPage.display();
-            entryEditWindow.close();
+            else {
+                EntryData.deleteEntry(EntryData.getCurrentEntry());
+
+
+                //prev.close();
+                if(type.equals("Individual")) IndividualRecordEntryPage.display();
+                else GroupRecordEntryPage.display();
+                entryEditWindow.close();
+            }
         });
 
         cancel.setOnAction(e -> {
@@ -98,7 +110,7 @@ public class EntryEditPage
         informationLayout.setBackground(new Background(myBI2));
 
         informationLayout.getChildren().addAll(remarks,entry,lAmount,amount,lTag, tag);
-        buttons.getChildren().addAll(update,deleteEntry,cancel);
+        buttons.getChildren().addAll(update,cancel);
        /* entryEditLayout.add(remarks, 0, 0);
         entryEditLayout.add(entry, 0, 2);
         entryEditLayout.add(lAmount, 0, 4);

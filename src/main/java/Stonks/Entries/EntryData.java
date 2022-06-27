@@ -12,8 +12,15 @@ public class EntryData {
     private static Vector<Entry> entries= new Vector<>();
     private static int currentEntry;
 
-    public static void addEntry(String name,Vector<String> tags,int amount,boolean isCashIn,int recordId){
-        entries.add(new Entry(name,tags,amount,isCashIn,recordId, CountData.entryCount++));
+    public static int addEntry(String name,Vector<String> tags,String amount,boolean isCashIn,int recordId){
+        if(name.isEmpty()||tags.get(0).isEmpty()||amount.isEmpty())return -1;
+        for(int i=0;i<amount.length();i++){
+            if(amount.charAt(i)<'0'||amount.charAt(i)>'9')return 0;
+        }
+
+        int parsedAmount= Integer.valueOf(amount);
+        entries.add(new Entry(name,tags,parsedAmount,isCashIn,recordId, CountData.entryCount++));
+        return 1;
     }
 
     private static int getEntryIdIndex(int id){

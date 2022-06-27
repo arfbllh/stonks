@@ -7,12 +7,15 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
+import javafx.scene.image.Image;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 //import sun.awt.X11.InfoWindow;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.Vector;
 
 public class AddUserPage
@@ -41,6 +44,7 @@ public class AddUserPage
         informationLayout.setPadding(new Insets(10,10,10,10));
 
         Label enterName = new Label("Enter the user name(s) :");
+        enterName.setTextFill(Color.rgb(189,183,107));
 
         TextField addName = new TextField();
 
@@ -76,6 +80,7 @@ public class AddUserPage
         for(int i = 0; i < addedUsers.size(); i++)
         {
             names[i] = new Label();
+            names[i].setTextFill(Color.rgb(189,183,107));
             names[i].setText(addedUsers.get(i));
             addedNames.getChildren().add(names[i]);
         }
@@ -124,6 +129,17 @@ public class AddUserPage
         buttons.getChildren().addAll(confirm,back);
         informationLayout.getChildren().addAll(enterName,takename, addedNames);
         addUserLayout.getChildren().addAll(informationLayout,buttons);
+
+        Image img2 = null;
+        try {
+            img2 = new Image(new FileInputStream("Background3.jpg"));
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        BackgroundImage myBI2= new BackgroundImage(img2,
+                BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
+                BackgroundSize.DEFAULT);
+        addUserLayout.setBackground(new Background(myBI2));
 
         addUserWindow.initModality(Modality.APPLICATION_MODAL);
         Scene addUserScene = new Scene(addUserLayout, 400, 400);

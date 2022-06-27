@@ -56,9 +56,18 @@ public class RecordInputWindow
 
         saveButton.setOnAction(e ->
         {
+            WarningAlert warning = new WarningAlert("Invalid Record Name", "Record Name can not be empty!");
             //String check = recordType.getValue();
-            if(recordType.equals("Personal")) RecordData.addRecord(nameOfRecord.getText(), UserData.getCurrentUser(), true);
-            else if(recordType.equals("Group") == true)RecordData.addRecord(nameOfRecord.getText(), UserData.getCurrentUser(), false);
+            if(recordType.equals("Personal")) {
+                if(!RecordData.addRecord(nameOfRecord.getText(), UserData.getCurrentUser(), true)){
+                    warning.display();
+                }
+            }
+            else if(recordType.equals("Group") == true){
+                if(!RecordData.addRecord(nameOfRecord.getText(), UserData.getCurrentUser(), false)){
+                    warning.display();
+                }
+            }
 
             prevWindow.close();
 

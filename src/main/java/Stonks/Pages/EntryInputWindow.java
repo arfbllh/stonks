@@ -83,22 +83,40 @@ public class EntryInputWindow
             System.out.println(st);
             Vector<String> temp = new Vector<>();
             temp.add(tag.getText());
-            int parsed = Integer.valueOf(st);
-            EntryData.addEntry(entry.getText(), temp, parsed, true, RecordData.getCurrentRecord());
-
+            //int parsed = Integer.valueOf(st);
+            int check= EntryData.addEntry(entry.getText(), temp, st, true, RecordData.getCurrentRecord());
+            if(check==-1){
+                WarningAlert warning = new WarningAlert("Invalid Input", "Fields can not be empty!");
+                warning.display();
+            }
+            else if(check==0){
+                WarningAlert warning = new WarningAlert("Invalid Amount", "Amount can not be non numeric!");
+                warning.display();
+            }
            // prev.close();
+            else {
+                if (type.equals("Individual")) IndividualRecordEntryPage.display();
+                else GroupRecordEntryPage.display();
 
-            if(type.equals("Individual"))IndividualRecordEntryPage.display();
-            else GroupRecordEntryPage.display();
-
-            entryInputWindow.close();
+                entryInputWindow.close();
+            }
         });
 
         cashOut.setOnAction(e -> {
             Vector<String> temp = new Vector<>();
             temp.add(tag.getText());
-            int p = Integer.parseInt(amount.getText());
-            EntryData.addEntry(entry.getText(), temp, p, false, RecordData.getCurrentRecord());
+            String st = amount.getText();
+            //int p = Integer.parseInt(amount.getText());
+            int check= EntryData.addEntry(entry.getText(), temp, st, false, RecordData.getCurrentRecord());
+            if(check==-1){
+                WarningAlert warning = new WarningAlert("Invalid Input", "Fields can not be empty!");
+                warning.display();
+            }
+            else if(check==0){
+                WarningAlert warning = new WarningAlert("Invalid Amount", "Amount can not be non numeric!");
+                warning.display();
+            }
+            //EntryData.addEntry(entry.getText(), temp, p, false, RecordData.getCurrentRecord());
 
            // prev.close();
 

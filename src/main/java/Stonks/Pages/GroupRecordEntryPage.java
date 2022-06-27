@@ -148,6 +148,7 @@ public class GroupRecordEntryPage
         VBox information1 = new VBox();
         information1.getChildren().addAll(totalCashIn,cashInAmount,totalCashOut,cashOutAmount,netCash,netAmount);
         information1.setPrefSize(200,100);
+        information1.setPadding(new Insets(10,10,10,10));
 
         VBox information2 = new VBox();
         information2.setSpacing(30);

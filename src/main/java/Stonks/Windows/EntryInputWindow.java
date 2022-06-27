@@ -58,8 +58,8 @@ public class EntryInputWindow
             System.out.println(st);
             Vector<String> temp = new Vector<>();
             temp.add(tag.getText());
-            int parsed = Integer.valueOf(st);
-            EntryData.addEntry(entry.getText(), temp, parsed, true, RecordData.getCurrentRecord());
+            //int parsed = Integer.valueOf(st);
+            EntryData.addEntry(entry.getText(), temp, st, true, RecordData.getCurrentRecord());
             prev.close();
             EntryPage.display();
             entryInputWindow.close();
@@ -68,8 +68,8 @@ public class EntryInputWindow
         cashOut.setOnAction(e -> {
             Vector<String> temp = new Vector<>();
             temp.add(tag.getText());
-            int p = Integer.parseInt(amount.getText());
-            EntryData.addEntry(entry.getText(), temp, p, false, RecordData.getCurrentRecord());
+           // int p = Integer.parseInt(amount.getText());
+            EntryData.addEntry(entry.getText(), temp, amount.getText(), false, RecordData.getCurrentRecord());
             prev.close();
             EntryPage.display();
             entryInputWindow.close();

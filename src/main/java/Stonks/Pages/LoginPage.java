@@ -10,6 +10,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
 import java.io.FileInputStream;
@@ -29,9 +30,13 @@ public class LoginPage
         Button register = new Button("Register");
 
         Label user = new Label("Username :");
+        user.setTextFill(Color.rgb(255,255,0));
         Label pass = new Label("Passcode :");
+        pass.setTextFill(Color.rgb(255,255,0));
         Label text = new Label("Not Signed up yet? ");
+        text.setTextFill(Color.rgb(255,255,0));
         Label selectaccounttype = new Label("Select Account type");
+        selectaccounttype.setTextFill(Color.rgb(255,255,0));
 
         userName = new TextField();
         passCode = new PasswordField();
@@ -51,6 +56,8 @@ public class LoginPage
 
             else
             {
+                WarningAlert warning = new WarningAlert("Invalid Credentials", "The username or passcode doesn't match!");
+                warning.display();
                 System.out.println("No");
             }});
 

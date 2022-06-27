@@ -15,6 +15,7 @@ public class GroupRecord extends IndRecord {
     }
 
     public void addUser(int userId){
+        if(users.size()==MemberConstants.MEMBER_LIMIT)return;
         users.add(new OmegaMember(userId));
     }
 
