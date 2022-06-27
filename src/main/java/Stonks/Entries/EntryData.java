@@ -70,7 +70,7 @@ public class EntryData {
         Set<String> taken= new HashSet<>();
 
         for(int i=0;i<entries.size();i++){
-            if(entries.get(i).getRecordId()==recordId && !taken.contains(entries.get(i).getTag())){
+            if(entries.get(i).getRecordId()==recordId  && entries.get(i).getCashInStatus() && !taken.contains(entries.get(i).getTag())){
                 res.add(new Pair(entries.get(i).getTag(),getTotalCashInByTag(recordId,entries.get(i).getTag())));
                 taken.add(entries.get(i).getTag());
             }
@@ -83,7 +83,7 @@ public class EntryData {
         Set<String> taken= new HashSet<>();
 
         for(int i=0;i<entries.size();i++){
-            if(entries.get(i).getRecordId()==recordId && !taken.contains(entries.get(i).getTag())){
+            if(entries.get(i).getRecordId()==recordId && !entries.get(i).getCashInStatus() && !taken.contains(entries.get(i).getTag())){
                 res.add(new Pair(entries.get(i).getTag(),getTotalCashOutByTag(recordId,entries.get(i).getTag())));
                 taken.add(entries.get(i).getTag());
             }

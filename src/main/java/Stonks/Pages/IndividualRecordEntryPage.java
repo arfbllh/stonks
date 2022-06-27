@@ -25,6 +25,8 @@ import java.util.Vector;
 
 public class IndividualRecordEntryPage
 {
+    private static final int CASHINMODE=0,CASHOUTMODE=1;
+    private static int toggleMode= CASHINMODE;
     public static void display()
     {
 
@@ -38,8 +40,9 @@ public class IndividualRecordEntryPage
         buttonLayout.setPrefSize(400,300);
         VBox informationLayout = new VBox();
         informationLayout.setPrefSize(400,200);
-        VBox visualizationLayout = new VBox();
+        HBox visualizationLayout = new HBox();
         visualizationLayout.setPrefSize(400,300);
+        visualizationLayout.setSpacing(10);
 
         Button addEntry = new Button("Add Entry");
         Button back = new Button("Back");
@@ -120,6 +123,7 @@ public class IndividualRecordEntryPage
 
         Vector<Integer> recordEntries= EntryData.getRecordEntries(RecordData.getCurrentRecord());
 
+
         int numberOfEntries = recordEntries.size();
 
         Label entries[] = new Label[numberOfEntries];
@@ -196,7 +200,10 @@ public class IndividualRecordEntryPage
             }
         }
 
-       /*Vector<Pair<String,Integer>> tagList = EntryData.getRecordCashInByTagNames(RecordData.getCurrentRecord());
+        Vector<Pair<String,Integer>> tagList = EntryData.getRecordCashInByTagNames(RecordData.getCurrentRecord());
+        if(toggleMode==CASHOUTMODE){
+            tagList= EntryData.getRecordCashOutByTagNames(RecordData.getCurrentRecord());
+        }
 
         ObservableList<PieChart.Data> cashInChartData = FXCollections.observableArrayList();
         System.out.println(tagList.size());
@@ -208,12 +215,20 @@ public class IndividualRecordEntryPage
 
         PieChart cashInChart = new PieChart(cashInChartData);
         cashInChart.setLabelLineLength(30);
-        cashInChart.setLabelsVisible(true);
+        cashInChart.setLabelsVisible(false);
         cashInChart.setStartAngle(90);
-        cashInChart.setPrefSize(300,300);
+        cashInChart.setPrefSize(250,250);
 
+        Button toggle = new Button("Cashout Status");
+        toggle.setStyle("-fx-font: 15 Serif; -fx-base: #FF6347; ");
+        toggle.setPrefSize(200, 300);
+        if(toggleMode==CASHOUTMODE)
+        {
+            toggle.setText("Cashin Status");
+            toggle.setStyle("-fx-font: 15 Serif; -fx-base: #32CD32; ");
+        }
         Group g1 = new Group(cashInChart);
-        visualizationLayout.getChildren().add(g1);*/
+        visualizationLayout.getChildren().addAll(g1, toggle);
 
         Image img2 = null;
         try {
@@ -229,6 +244,14 @@ public class IndividualRecordEntryPage
         ScrollPane scrollEntryLayout = new ScrollPane();
         scrollEntryLayout.setContent(entryLayout);
 
+        toggle.setOnAction(e -> {
+            toggleMode = 1-toggleMode;
+            display();
+        });
+
+        //ScrollPane scPC = new ScrollPane();
+        //scPC.setContent(visualizationLayout);
+        visualizationLayout.setStyle("-fx-background: rgb(72,61,139);\n -fx-background-color: rgb(72,61,139)");
         interactiveLayout.getChildren().addAll(buttonLayout,informationLayout,visualizationLayout);
 
         individualEntryLayout.getChildren().addAll(scrollEntryLayout, interactiveLayout);

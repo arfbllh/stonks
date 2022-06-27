@@ -5,8 +5,12 @@ import Stonks.Entries.EntryView;
 import Stonks.MemberConstants;
 import Stonks.Records.RecordData;
 import Stonks.Users.UserData;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
+import javafx.scene.Group;
 import javafx.scene.Scene;
+import javafx.scene.chart.PieChart;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ScrollPane;
@@ -14,6 +18,7 @@ import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import javafx.util.Pair;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -21,6 +26,8 @@ import java.util.Vector;
 
 public class GroupRecordEntryPage
 {
+    private static final int CASHINMODE=0,CASHOUTMODE=1;
+    private static int toggleMode= CASHINMODE;
     public static void display()
     {
         //Stage entryWindow = new Stage();
@@ -35,8 +42,9 @@ public class GroupRecordEntryPage
         buttonLayout.setPrefSize(400,300);
         HBox informationLayout = new HBox();
         informationLayout.setPrefSize(400,200);
-        VBox visualizationLayout = new VBox();
+        HBox visualizationLayout = new HBox();
         visualizationLayout.setPrefSize(400,300);
+        visualizationLayout.setSpacing(10);
 
         Button addEntry = new Button("Add Entry");
         Button back = new Button("Back");
@@ -270,6 +278,36 @@ public class GroupRecordEntryPage
             RecordMemberPage.display(window.Window);
         });
 
+        Vector<Pair<String,Integer>> tagList = EntryData.getRecordCashInByTagNames(RecordData.getCurrentRecord());
+        if(toggleMode==CASHOUTMODE){
+            tagList= EntryData.getRecordCashOutByTagNames(RecordData.getCurrentRecord());
+        }
+
+        ObservableList<PieChart.Data> cashInChartData = FXCollections.observableArrayList();
+        System.out.println(tagList.size());
+        System.out.println(RecordData.getCurrentRecord());
+        for(int i = 0; i < tagList.size(); i++)
+        {
+            cashInChartData.add(new PieChart.Data(tagList.get(i).getKey(),tagList.get(i).getValue()));
+        }
+
+        PieChart cashInChart = new PieChart(cashInChartData);
+        cashInChart.setLabelLineLength(30);
+        cashInChart.setLabelsVisible(false);
+        cashInChart.setStartAngle(90);
+        cashInChart.setPrefSize(250,250);
+
+        Button toggle = new Button("Cashout Status");
+        toggle.setStyle("-fx-font: 15 Serif; -fx-base: #FF6347; ");
+        toggle.setPrefSize(200, 300);
+        if(toggleMode==CASHOUTMODE)
+        {
+            toggle.setText("Cashin Status");
+            toggle.setStyle("-fx-font: 15 Serif; -fx-base: #32CD32; ");
+        }
+        Group g1 = new Group(cashInChart);
+        visualizationLayout.getChildren().addAll(g1, toggle);
+
         Image img = null;
         try {
             img = new Image(new FileInputStream("Background3.jpg"));
@@ -284,6 +322,12 @@ public class GroupRecordEntryPage
         ScrollPane scrollEntryLayout = new ScrollPane();
         scrollEntryLayout.setContent(entryLayout);
 
+        toggle.setOnAction(e -> {
+            toggleMode = 1-toggleMode;
+            display();
+        });
+
+        visualizationLayout.setStyle("-fx-background: rgb(72,61,139);\n -fx-background-color: rgb(72,61,139)");
         interactiveLayout.getChildren().addAll(buttonLayout,informationLayout,visualizationLayout);
 
         groupEntryLayout.getChildren().addAll(scrollEntryLayout, interactiveLayout);
