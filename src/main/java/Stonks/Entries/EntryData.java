@@ -3,7 +3,10 @@ package Stonks.Entries;
 import Database.EntryManage;
 import Stonks.CountData;
 import Stonks.DataStore;
+import javafx.util.Pair;
 
+import java.util.HashSet;
+import java.util.Set;
 import java.util.Vector;
 
 public class EntryData {
@@ -37,6 +40,54 @@ public class EntryData {
             if(entries.get(i).getRecordId()==recordId)res.add(entries.get(i).getId());
         }
 
+        return res;
+    }
+
+    public static int getTotalCashInByTag(int recordId,String tagName){
+        int res=0;
+        for(int i=0;i<entries.size();i++){
+            Entry entry= entries.get(i);
+            if(entry.getRecordId()==recordId && entry.getTag().equals((tagName))&& entry.getCashInStatus()){
+                res += entry.getAmount();
+            }
+        }
+        return res;
+    }
+
+    public static int getTotalCashOutByTag(int recordId,String tagName){
+        int res=0;
+        for(int i=0;i<entries.size();i++){
+            Entry entry= entries.get(i);
+            if(entry.getRecordId()==recordId && entry.getTag().equals((tagName))&& !entry.getCashInStatus()){
+                res += entry.getAmount();
+            }
+        }
+        return res;
+    }
+
+    public static Vector<Pair<String,Integer>> getRecordCashInByTagNames(int recordId){
+        Vector<Pair<String,Integer>> res = new Vector<>();
+        Set<String> taken= new HashSet<>();
+
+        for(int i=0;i<entries.size();i++){
+            if(!taken.contains(entries.get(i).getTag())){
+                res.add(new Pair(entries.get(i).getTag(),getTotalCashInByTag(recordId,entries.get(i).getTag())));
+                taken.add(entries.get(i).getTag());
+            }
+        }
+        return res;
+    }
+
+    public static Vector<Pair<String,Integer>> getRecordCashOutByTagNames(int recordId){
+        Vector<Pair<String,Integer>> res = new Vector<>();
+        Set<String> taken= new HashSet<>();
+
+        for(int i=0;i<entries.size();i++){
+            if(!taken.contains(entries.get(i).getTag())){
+                res.add(new Pair(entries.get(i).getTag(),getTotalCashOutByTag(recordId,entries.get(i).getTag())));
+                taken.add(entries.get(i).getTag());
+            }
+        }
         return res;
     }
 
