@@ -42,7 +42,7 @@ public class LoginPage
                 loginWindow.close();
                 int userId= UserData.getUserId(tempUser,tempPass);
                 UserData.setCurrentUser(userId);
-                MenuPage.display();
+                MenuPage.display(loginWindow);
             }
 
             else

@@ -13,4 +13,9 @@
       <module name="stonks" target="17" />
     </bytecodeTargetLevel>
   </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="stonks" options="--add-exports java.desktop/sun.awt.X11=com.example.stonks" />
+    </option>
+  </component>
 </project>

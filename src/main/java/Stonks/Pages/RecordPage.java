@@ -136,7 +136,7 @@ public class RecordPage
 
         backButton.setOnAction(e -> {
             recordWindow.close();
-            MenuPage.display();
+            //MenuPage.display();
         });
 
         gridTopLayout.add(logOut, 20, 0);

@@ -9,6 +9,7 @@ module com.example.stonks {
     requires org.kordamp.bootstrapfx.core;
     requires eu.hansolo.tilesfx;
     requires java.sql;
+    requires java.desktop;
 
     opens com.example.stonks to javafx.fxml;
     exports Stonks;
