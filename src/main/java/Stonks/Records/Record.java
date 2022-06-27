@@ -33,6 +33,8 @@ public abstract class Record implements Serializable {
 
     abstract public Vector<Integer> getRecordMembers();
 
+    //abstract public int getTotalCashInByTag(String tagName);
+
     public void addUser(int userId){
         return;
     }
@@ -57,4 +59,6 @@ public abstract class Record implements Serializable {
     public String toString() {
         return "Record{}";
     }
+
+
 }

@@ -86,6 +86,10 @@ public class IndRecord extends Record {
         return res;
     }
 
+//    public int getTotalCashInByTag(String tagName){
+//
+//    }
+
     @Override
     public String toString() {
         return "IndRecord{" +

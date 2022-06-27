@@ -139,7 +139,7 @@ public class EntryPage
 
             viewButtons[i].setOnAction(e -> {
                 EntryData.setCurrentEntry(id);
-                EntryView.display(EntryWindow);
+                //EntryView.display(EntryWindow);
             });
         }
 

@@ -8,19 +8,22 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.GridPane;
+import javafx.scene.image.Image;
+import javafx.scene.layout.*;
 import javafx.stage.Stage;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 
 public class LoginPage
 {
     public static void display()
     {
-        Stage loginWindow;
+        //Stage loginWindow;
         TextField userName;
         PasswordField passCode;
 
-        loginWindow = new Stage();
-        loginWindow.setTitle("Stonks");
+        window.Window.setTitle("Stonks");
 
         Button login = new Button("Login");
         Button register = new Button("Register");
@@ -33,16 +36,17 @@ public class LoginPage
         userName = new TextField();
         passCode = new PasswordField();
 
+        Stage finalLoginWindow = window.Window;
         login.setOnAction(e -> {
             String tempUser = userName.getText();
             String tempPass = passCode.getText();
             //used database function here
             if(UserData.checkUser(tempUser, tempPass) == true)
             {
-                loginWindow.close();
+                //loginWindow.close();
                 int userId= UserData.getUserId(tempUser,tempPass);
                 UserData.setCurrentUser(userId);
-                MenuPage.display(loginWindow);
+                MenuPage.display();
             }
 
             else
@@ -50,8 +54,9 @@ public class LoginPage
                 System.out.println("No");
             }});
 
+
         register.setOnAction(e -> {
-            loginWindow.close();
+            //loginWindow.close();
             RegisterPage.display();
         });
 
@@ -71,9 +76,19 @@ public class LoginPage
         loginLayout.add(text,1, 8);
         loginLayout.add(register, 2, 8);
 
+        Image img2 = null;
+        try {
+            img2 = new Image(new FileInputStream("Background.jpg"));
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        BackgroundImage myBI2= new BackgroundImage(img2,
+                BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
+                BackgroundSize.DEFAULT);
+        loginLayout.setBackground(new Background(myBI2));
 
         Scene loginScene = new Scene(loginLayout, 1200, 800);
-        loginWindow.setScene(loginScene);
-        loginWindow.show();
+        window.Window.setScene(loginScene);
+        window.Window.show();
     }
 }

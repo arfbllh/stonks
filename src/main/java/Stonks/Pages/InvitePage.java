@@ -28,7 +28,7 @@ public class InvitePage
         Vector<Invite> invites= UserData.getUserInvites(UserData.getCurrentUser());
         int numberOfInvites = invites.size();
 
-        Scene inviteScene = new Scene(inviteLayout, 600, 300);
+        Scene inviteScene = new Scene(inviteLayout, 600, 600);
         inviteWindow.setScene(inviteScene);
         inviteWindow.show();
 
