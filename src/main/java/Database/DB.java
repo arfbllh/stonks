@@ -1,5 +1,7 @@
 package Database;
 
+import Stonks.Users.UserData;
+
 import java.sql.*;
 public class DB {
     public static Connection connection;
@@ -16,6 +18,8 @@ public class DB {
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
         }
+
+        start();
     }
 
     static  boolean isDBConnected() throws SQLException {
@@ -32,14 +36,37 @@ public class DB {
         try {
             statement = (PreparedStatement) connection.prepareStatement(query);
             ResultSet resultSet = statement.executeQuery();
-            return resultSet.next();
-
+            boolean yes = resultSet.next();
+            resultSet.close();
+            statement.close();
+            return yes;
         } catch (SQLException e) {
             e.printStackTrace();
             return false;
         }
     }
 
+    public static void deleteTable(String name){
+
+        if(isTableExits(name)){
+            try{
+                String command = "DROP TABLE " + name;
+                PreparedStatement statement = connection.prepareStatement(command);
+                statement.executeUpdate();
+                statement.close();
+            }
+            catch (SQLException e){
+                e.printStackTrace();
+            }
+        }
+    }
+
+    static void start(){
+        UserData.retrieveUser();
+    }
+    public static void close(){
+        UserData.saveUsers();
+    }
 
 
 

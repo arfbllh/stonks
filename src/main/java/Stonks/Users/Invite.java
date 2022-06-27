@@ -9,7 +9,7 @@ public class Invite {
         this.recordId= recordId;
     }
 
-    Invite(int senderId,int receiverId,int recordId){
+    public Invite(int senderId, int receiverId, int recordId){
         this.senderId= senderId;
         this.receiverId= receiverId;
         this.recordId= recordId;

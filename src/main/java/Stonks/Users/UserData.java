@@ -5,6 +5,7 @@ import Stonks.DataStore;
 
 import java.io.*;
 import java.util.Vector;
+import Database.*;
 
 public class UserData implements Serializable
 {
@@ -105,5 +106,13 @@ public class UserData implements Serializable
    static void showAllUsers(){
         System.out.println(users.size());
        for(User u : users) System.out.println(u.toString());
+    }
+
+    public static void retrieveUser()
+    {
+        users = UserInfo.start();
+    }
+    public static void saveUsers(){
+        UserInfo.close(users);
     }
 }
