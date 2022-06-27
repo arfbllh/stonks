@@ -7,11 +7,11 @@ import java.util.Vector;
 
 public class Entry implements Serializable {
     private String name;
-    private Vector<String> tags;
+    public Vector<String> tags;
     private int amount, recordId, entryId;
     private boolean isCashIn;
 
-    Entry(String name,Vector<String> tags,int amount,boolean isCashIn,int recordId,int entryId){
+    public Entry(String name, Vector<String> tags, int amount, boolean isCashIn, int recordId, int entryId){
         this.name= name;
         this.amount= amount;
         this.tags= tags;

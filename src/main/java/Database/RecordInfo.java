@@ -1,8 +1,12 @@
 package Database;
 
+import Stonks.Records.Record;
+
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.Vector;
+import Database.*;
 
 public class RecordInfo {
     static Connection connection = DB.returnConnection();
@@ -37,4 +41,16 @@ public class RecordInfo {
         }
     }
 
+    public static Vector<Integer> restore1() {
+        if(!isTab)
+    }
+
+    public static Vector<Record> restore2(Vector<Integer> recordType) {
+    }
+
+    public static void save1(Vector<Integer> recordType) {
+    }
+
+    public static void save2(Vector<Record> records) {
+    }
 }

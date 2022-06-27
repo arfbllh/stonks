@@ -1,5 +1,6 @@
 package Stonks.Entries;
 
+import Database.EntryManage;
 import Stonks.CountData;
 import Stonks.DataStore;
 
@@ -91,13 +92,11 @@ public class EntryData {
         int result= getRecordCashIn(recordId)-getRecordCashOut(recordId);
         return result;
     }
-    static void init(){
-        DataStore<Entry> obj = new DataStore<Entry>();
-        entries = obj.init("entries");
+    public static void init(){
+        entries = EntryManage.init();
 
     }
-    static void close(){
-        DataStore<Entry> obj = new DataStore<Entry>();
-        obj.close("entries", entries);
+    public static void close(){
+        EntryManage.exit(entries);
     }
 }

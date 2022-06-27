@@ -1,5 +1,6 @@
 package Stonks.Records;
 
+import Database.RecordInfo;
 import Stonks.CountData;
 import Stonks.DataStore;
 
@@ -140,17 +141,13 @@ public class RecordData {
     }
     static void init(){
 
-        DataStore<Record> obj = new DataStore<Record>();
-        records = obj.init("record1");
-        DataStore<Integer> obj2 = new DataStore<Integer>();
-        recordType = obj2.init("record2");
+        recordType = RecordInfo.restore1();
+        records = RecordInfo.restore2(recordType);
 
 
     }
     static void close(){
-        DataStore<Record> obj = new DataStore<Record>();
-        DataStore<Integer> obj2 = new DataStore<Integer>();
-        obj.close("record1", records);
-        obj2.close("record2", recordType);
+        RecordInfo.save1(recordType);
+        RecordInfo.save2(records);
     }
 }
