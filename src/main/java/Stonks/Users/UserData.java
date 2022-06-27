@@ -97,16 +97,7 @@ public class UserData implements Serializable
         return users.get(index).getInvites();
     }
 
-//    static void init(){
-//        DataStore<User> obj = new DataStore<User>();
-//        users = obj.init("user");
-//
-//
-//    }
-//    static void close(){
-//        DataStore<User> obj = new DataStore<User>();
-//        ((DataStore<User>) obj).close("user", users);
-//    }
+
 
    static void showAllUsers(){
         System.out.println(users.size());
