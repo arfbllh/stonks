@@ -139,15 +139,15 @@ public class RecordData {
         int index= getRecordIdIndex(recordId);
         records.get(index).removeUser(userId);
     }
-    static void init(){
+    public static void init(){
 
         recordType = RecordInfo.restore1();
         records = RecordInfo.restore2(recordType);
 
 
     }
-    static void close(){
+    public static void close(){
         RecordInfo.save1(recordType);
-        RecordInfo.save2(records);
+        RecordInfo.save2(records, recordType);
     }
 }

@@ -10,7 +10,7 @@ public class CountData {
     public static int userCount;
     public static int recordCount;
     public static int entryCount;
-    static void close()  {
+    public static void close()  {
         try{
             Path path = Paths.get("CountData");
             String data = userCount + " " + recordCount + " " + entryCount;
@@ -21,7 +21,7 @@ public class CountData {
             e.printStackTrace();
         }
     }
-    static  void init() {
+    public static  void init() {
         try{
             File fr = new File("CountData");
             fr.createNewFile();

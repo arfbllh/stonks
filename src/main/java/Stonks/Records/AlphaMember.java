@@ -3,7 +3,7 @@ package Stonks.Records;
 import Stonks.MemberConstants;
 
 public class AlphaMember extends SigmaMember{
-    AlphaMember(int userId){
+    public AlphaMember(int userId){
         super(userId);
     }
 

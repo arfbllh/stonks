@@ -6,8 +6,8 @@ import Stonks.MemberConstants;
 import java.util.Vector;
 
 public class GroupRecord extends IndRecord {
-    static Vector<RecordMember> users;
-    GroupRecord(String name, int userId,int recordId) {
+    public static Vector<RecordMember> users;
+    public GroupRecord(String name, int userId, int recordId) {
         super(name,userId,recordId);
         users= new Vector<>();
         users.add(new AlphaMember(userId));

@@ -1,7 +1,9 @@
 package Database;
 
+import Stonks.CountData;
 import Stonks.Entries.EntryData;
 import Stonks.Users.UserData;
+import Stonks.Records.*;
 
 import java.sql.*;
 public class DB {
@@ -65,10 +67,14 @@ public class DB {
     static void start(){
         UserData.retrieveUser();
         EntryData.init();
+        CountData.init();
+        RecordData.init();
     }
     public static void close(){
         UserData.saveUsers();
         EntryData.close();
+        RecordData.close();
+        CountData.close();
     }
 
 

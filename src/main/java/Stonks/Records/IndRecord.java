@@ -9,7 +9,7 @@ public class IndRecord extends Record {
     String name;
     int recordId,creatorId;
 
-    IndRecord(String name, int userId,int recordId){
+    public IndRecord(String name, int userId, int recordId){
         this.name= name;
         this.recordId= recordId;
         this.creatorId= userId;

@@ -5,7 +5,7 @@ import Stonks.MemberConstants;
 public class OmegaMember extends RecordMember{
     public int userId;
 
-    OmegaMember(int userId){
+    public OmegaMember(int userId){
         this.userId= userId;
     }
 
