@@ -1,7 +1,6 @@
 package Stonks.Pages;
 
 import Stonks.Entries.EntryData;
-import Stonks.Entries.EntryView;
 import Stonks.MemberConstants;
 import Stonks.Records.RecordData;
 import Stonks.Users.UserData;
@@ -17,7 +16,6 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
-import javafx.stage.Stage;
 import javafx.util.Pair;
 
 import java.io.FileInputStream;
@@ -247,7 +245,7 @@ public class GroupRecordEntryPage
 
                 viewButtons[i].setOnAction(e -> {
                     EntryData.setCurrentEntry(id);
-                    EntryView.display(window.Window, "Group");
+                    AddUserPage.EntryView.display(window.Window, "Group");
                 });
 
                 hboxEntries[i] = new HBox();

@@ -2,7 +2,6 @@ package Stonks.Pages;
 
 import Stonks.Entries.EntryData;
 import Stonks.Windows.EntryInputWindow;
-import Stonks.Entries.EntryView;
 import Stonks.MemberConstants;
 import Stonks.Records.RecordData;
 import Stonks.Users.UserData;

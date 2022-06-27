@@ -1,7 +1,6 @@
 package Stonks.Pages;
 
 import Stonks.Entries.EntryData;
-import Stonks.Entries.EntryView;
 import Stonks.Records.RecordData;
 import Stonks.Users.UserData;
 import javafx.collections.FXCollections;
@@ -16,7 +15,6 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
-import javafx.stage.Stage;
 import javafx.util.Pair;
 
 import java.io.FileInputStream;
@@ -185,7 +183,7 @@ public class IndividualRecordEntryPage
 
                 viewButtons[i].setOnAction(e -> {
                     EntryData.setCurrentEntry(id);
-                    EntryView.display(window.Window, "Individual");
+                    AddUserPage.EntryView.display(window.Window, "Individual");
                 });
 
                 hboxEntries[i] = new HBox();

@@ -1,7 +1,6 @@
 package Stonks.Pages;
 
 import Stonks.Entries.EntryData;
-import Stonks.Entries.EntryView;
 import Stonks.Records.RecordData;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
