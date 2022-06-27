@@ -13,11 +13,16 @@ public class UserData implements Serializable
     private static int currentUser;
     static private boolean saved;
 
-    public static void addUser(String username, String passcode, String account)
+    public static int addUser(String username, String passcode, String account)
     {
+        if(username.isEmpty()||passcode.isEmpty())return -1;
         boolean isIndividual= true;
-        if(account.equals("Individual") == false)isIndividual= false;
+        //if(account.equals("Individual") == false)isIndividual= false;
+        for(int i=0;i<users.size();i++){
+            if(users.get(i).getUserName().equals(username))return 0;
+        }
         users.add(new User(username,passcode,isIndividual, CountData.userCount++));
+        return 1;
     }
 
     static public int getCurrentUser()
