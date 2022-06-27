@@ -23,7 +23,7 @@ public class GroupRecordEntryPage
 {
     public static void display()
     {
-        Stage entryWindow = new Stage();
+        //Stage entryWindow = new Stage();
 
         HBox groupEntryLayout = new HBox();
         VBox entryLayout = new VBox();
@@ -69,11 +69,11 @@ public class GroupRecordEntryPage
 
 
         addEntry.setOnAction(e -> {
-            EntryInputWindow.display(entryWindow, "Individual");
+            EntryInputWindow.display(window.Window, "Group");
         });
 
         back.setOnAction(e -> {
-            MenuPage.display(entryWindow);
+            MenuPage.display();
         });
 
         if(RecordData.hasDeleteRecordAccess(RecordData.getCurrentRecord(), UserData.getCurrentUser()))
@@ -82,7 +82,7 @@ public class GroupRecordEntryPage
                 RecordData.deleteRecord(RecordData.getCurrentRecord());
                 RecordData.setCurrentRecord(-1);
                 //entryWindow.close();
-                MenuPage.display(entryWindow);
+                MenuPage.display();
             });
         }
 
@@ -238,7 +238,7 @@ public class GroupRecordEntryPage
 
                 viewButtons[i].setOnAction(e -> {
                     EntryData.setCurrentEntry(id);
-                    EntryView.display(entryWindow);
+                    EntryView.display(window.Window, "Group");
                 });
 
                 hboxEntries[i] = new HBox();
@@ -255,19 +255,19 @@ public class GroupRecordEntryPage
 
         leave.setOnAction(e -> {
             RecordData.removeRecordMember(RecordData.getCurrentRecord(), UserData.getCurrentUser());
-            entryWindow.close();
+            window.Window.close();
             RecordPage.display();
         });
 
         if(RecordData.hasAddMemberAccess(RecordData.getCurrentRecord(), UserData.getCurrentUser()) == true)
         {
             addUser.setOnAction( e -> {
-                AddUserPage.display(entryWindow);
+                AddUserPage.display(window.Window);
             });
         }
 
         members.setOnAction(e -> {
-            RecordMemberPage.display(entryWindow);
+            RecordMemberPage.display(window.Window);
         });
 
         Image img = null;
@@ -289,7 +289,7 @@ public class GroupRecordEntryPage
         groupEntryLayout.getChildren().addAll(scrollEntryLayout, interactiveLayout);
 
         Scene individualEntryScene = new Scene(groupEntryLayout, 1200, 800);
-        entryWindow.setScene(individualEntryScene);
-        entryWindow.show();
+        window.Window.setScene(individualEntryScene);
+        window.Window.show();
     }
 }

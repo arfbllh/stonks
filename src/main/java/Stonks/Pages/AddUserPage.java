@@ -95,7 +95,7 @@ public class AddUserPage
         back.setOnAction(e -> {
             addedUsers.clear();
 
-            prev.close();
+            //prev.close();
             addUserWindow.close();
             GroupRecordEntryPage.display();
         });
@@ -108,7 +108,7 @@ public class AddUserPage
 
             addedUsers.clear();
 
-            prev.close();
+           // prev.close();
             addUserWindow.close();
             GroupRecordEntryPage.display();
         });
@@ -116,7 +116,7 @@ public class AddUserPage
         addUserWindow.setOnCloseRequest(e ->{
             addedUsers.clear();
 
-            prev.close();
+            //prev.close();
             addUserWindow.close();
             GroupRecordEntryPage.display();
         });

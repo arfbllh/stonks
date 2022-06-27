@@ -13,9 +13,9 @@ import java.io.FileNotFoundException;
 
 public class MenuPage
 {
-    public static void display(Stage menuWindow)
+    public static void display()
     {
-        menuWindow.setTitle("Stonks");
+        window.Window.setTitle("Stonks");
         /*GridPane menuLayout = new GridPane();
         menuLayout.setAlignment(Pos.CENTER);
         menuLayout.setHgap(10);
@@ -47,7 +47,7 @@ public class MenuPage
 
         logOut.setOnAction(e -> {
             UserData.setCurrentUser(-1);
-            menuWindow.close();
+            //menuWindow.close();
             LoginPage.display();
         });
 
@@ -102,7 +102,7 @@ public class MenuPage
         menuLayout.setBackground(new Background(myBI));
 
         Scene menuScene = new Scene(menuLayout, 1200, 800);
-        menuWindow.setScene(menuScene);
-        menuWindow.show();
+        window.Window.setScene(menuScene);
+        window.Window.show();
     }
 }

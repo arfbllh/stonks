@@ -139,7 +139,7 @@ public class RecordMemberPage
         finalRecordMemberLayout.setBackground(new Background(myBI2));
 
 
-        Scene recordMemberScene = new Scene(finalRecordMemberLayout, 600, 300);
+        Scene recordMemberScene = new Scene(finalRecordMemberLayout, 600, 600);
         recordMemberWindow.setScene(recordMemberScene);
         recordMemberWindow.show();
     }

@@ -5,16 +5,19 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.GridPane;
+import javafx.scene.image.Image;
+import javafx.scene.layout.*;
 import javafx.stage.Stage;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 
 public class RegisterPage
 {
     public static void display()
     {
-        Stage registerWindow = new Stage();
-        registerWindow.setTitle("Stonks");
+        //Stage registerWindow = new Stage();
+        window.Window.setTitle("Stonks");
 
         Button login = new Button("Login");
         Button register = new Button("Register");
@@ -41,14 +44,14 @@ public class RegisterPage
         PasswordField passCode = new PasswordField();
 
         login.setOnAction(e -> {
-            registerWindow.close();
+            //registerWindow.close();
             LoginPage.display();
         });
 
         register.setOnAction(e -> {
             //used database function here
             UserData.addUser(userName.getText(), passCode.getText(), accountType.getValue());
-            registerWindow.close();
+            //registerWindow.close();
             LoginPage.display();
         });
 
@@ -66,9 +69,19 @@ public class RegisterPage
 
         BorderPane finalRegisterLayout = new BorderPane();
 
+        Image img2 = null;
+        try {
+            img2 = new Image(new FileInputStream("Background.jpg"));
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        BackgroundImage myBI2= new BackgroundImage(img2,
+                BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
+                BackgroundSize.DEFAULT);
+        registerLayout.setBackground(new Background(myBI2));
 
         Scene registerScene = new Scene(registerLayout, 1200, 800);
-        registerWindow.setScene(registerScene);
-        registerWindow.show();
+        window.Window.setScene(registerScene);
+        window.Window.show();
     }
 }

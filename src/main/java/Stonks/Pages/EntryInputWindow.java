@@ -85,7 +85,11 @@ public class EntryInputWindow
             temp.add(tag.getText());
             int parsed = Integer.valueOf(st);
             EntryData.addEntry(entry.getText(), temp, parsed, true, RecordData.getCurrentRecord());
-            prev.close();
+
+           // prev.close();
+
+            if(type.equals("Individual"))IndividualRecordEntryPage.display();
+            else GroupRecordEntryPage.display();
 
             entryInputWindow.close();
         });
@@ -95,7 +99,8 @@ public class EntryInputWindow
             temp.add(tag.getText());
             int p = Integer.parseInt(amount.getText());
             EntryData.addEntry(entry.getText(), temp, p, false, RecordData.getCurrentRecord());
-            prev.close();
+
+           // prev.close();
 
             if(type.equals("Individual")) IndividualRecordEntryPage.display();
             else GroupRecordEntryPage.display();

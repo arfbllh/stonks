@@ -27,7 +27,6 @@ public class IndividualRecordEntryPage
 {
     public static void display()
     {
-        Stage entryWindow = new Stage();
 
         HBox individualEntryLayout = new HBox();
         VBox entryLayout = new VBox();
@@ -57,11 +56,11 @@ public class IndividualRecordEntryPage
         buttonLayout.getChildren().addAll(addEntry,deleteRecord,back);
 
         addEntry.setOnAction(e -> {
-            EntryInputWindow.display(entryWindow, "Individual");
+            EntryInputWindow.display(window.Window, "Individual");
         });
 
         back.setOnAction(e -> {
-            MenuPage.display(entryWindow);
+            MenuPage.display();
         });
 
         if(RecordData.hasDeleteRecordAccess(RecordData.getCurrentRecord(), UserData.getCurrentUser()))
@@ -70,7 +69,7 @@ public class IndividualRecordEntryPage
                 RecordData.deleteRecord(RecordData.getCurrentRecord());
                 RecordData.setCurrentRecord(-1);
                 //entryWindow.close();
-                MenuPage.display(entryWindow);
+                MenuPage.display();
             });
         }
 
@@ -182,7 +181,7 @@ public class IndividualRecordEntryPage
 
                 viewButtons[i].setOnAction(e -> {
                     EntryData.setCurrentEntry(id);
-                    EntryView.display(entryWindow);
+                    EntryView.display(window.Window, "Individual");
                 });
 
                 hboxEntries[i] = new HBox();
@@ -197,7 +196,7 @@ public class IndividualRecordEntryPage
             }
         }
 
-       Vector<Pair<String,Integer>> tagList = EntryData.getRecordCashInByTagNames(RecordData.getCurrentRecord());
+       /*Vector<Pair<String,Integer>> tagList = EntryData.getRecordCashInByTagNames(RecordData.getCurrentRecord());
 
         ObservableList<PieChart.Data> cashInChartData = FXCollections.observableArrayList();
         System.out.println(tagList.size());
@@ -214,7 +213,7 @@ public class IndividualRecordEntryPage
         cashInChart.setPrefSize(300,300);
 
         Group g1 = new Group(cashInChart);
-        visualizationLayout.getChildren().add(g1);
+        visualizationLayout.getChildren().add(g1);*/
 
         Image img2 = null;
         try {
@@ -235,7 +234,7 @@ public class IndividualRecordEntryPage
         individualEntryLayout.getChildren().addAll(scrollEntryLayout, interactiveLayout);
 
         Scene individualEntryScene = new Scene(individualEntryLayout, 1200, 800);
-        entryWindow.setScene(individualEntryScene);
-        entryWindow.show();
+        window.Window.setScene(individualEntryScene);
+        window.Window.show();
     }
 }

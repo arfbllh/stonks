@@ -20,7 +20,7 @@ import java.util.Vector;
 
 public class EntryEditPage
 {
-    public static void display(Stage prev)
+    public static void display(Stage prev, String type)
     {
         Stage entryEditWindow = new Stage();
 
@@ -74,14 +74,16 @@ public class EntryEditPage
             EntryData.addEntry(entry.getText(), temp, Integer.valueOf(amount.getText()),EntryData.isCashIn(curEntry), RecordData.getCurrentRecord() );
             EntryData.deleteEntry(EntryData.getCurrentEntry());
 
-            prev.close();
-            EntryPage.display();
+            //prev.close();
+            if(type.equals("Individual")) IndividualRecordEntryPage.display();
+            else GroupRecordEntryPage.display();
             entryEditWindow.close();
         });
 
         cancel.setOnAction(e -> {
             entryEditWindow.close();
-            EntryView.display(prev);
+            if(type.equals("Individual")) IndividualRecordEntryPage.display();
+            else GroupRecordEntryPage.display();
         });
 
         Image img2 = null;

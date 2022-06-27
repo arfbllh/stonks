@@ -127,7 +127,7 @@ public class RecordPage
         logOut.setOnAction(e -> {
             UserData.setCurrentUser(-1);
             recordWindow.close();
-            LoginPage.display();
+            //LoginPage.display();
         });
 
         addRecord.setOnAction(e -> {

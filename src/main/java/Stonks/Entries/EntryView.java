@@ -2,6 +2,8 @@ package Stonks.Entries;
 
 import Stonks.Pages.EntryEditPage;
 import Stonks.Pages.EntryPage;
+import Stonks.Pages.GroupRecordEntryPage;
+import Stonks.Pages.IndividualRecordEntryPage;
 import Stonks.Records.RecordData;
 import Stonks.Users.UserData;
 import javafx.geometry.Insets;
@@ -18,7 +20,7 @@ import java.io.FileNotFoundException;
 
 public class EntryView
 {
-    public static void display(Stage prev)
+    public static void display(Stage prev, String type)
     {
         Stage entryViewWindow  = new Stage();
 
@@ -76,14 +78,15 @@ public class EntryView
         {
             edit.setOnAction(e -> {
                 entryViewWindow.close();
-                EntryEditPage.display(prev);
+                EntryEditPage.display(prev, type);
             });
         }
 
         cancel.setOnAction(e -> {
             entryViewWindow.close();
-            prev.close();
-            EntryPage.display();
+            //prev.close();
+            if(type.equals("Individual")) IndividualRecordEntryPage.display();
+            else GroupRecordEntryPage.display();
         });
 
         if(RecordData.hasDeleteEntryAccess(RecordData.getCurrentRecord(), UserData.getCurrentUser()) == true)
@@ -91,8 +94,9 @@ public class EntryView
             deleteEntry.setOnAction(e -> {
                 EntryData.deleteEntry(EntryData.getCurrentEntry());
 
-                prev.close();
-                EntryPage.display();
+                //prev.close();
+                if(type.equals("Individual")) IndividualRecordEntryPage.display();
+                else GroupRecordEntryPage.display();
                 entryViewWindow.close();
             });
         }
