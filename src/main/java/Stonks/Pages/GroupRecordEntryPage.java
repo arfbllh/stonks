@@ -142,7 +142,7 @@ public class GroupRecordEntryPage
         else if(RecordData.getRecordMemberStatus(RecordData.getCurrentRecord(), UserData.getCurrentUser()) == MemberConstants.SIGMA)
         {
             status.setText("Sigma");
-            status.setTextFill(Color.color(0, 0, .5));
+            status.setTextFill(Color.rgb(100,149,237));
         }
 
         else if(RecordData.getRecordMemberStatus(RecordData.getCurrentRecord(), UserData.getCurrentUser()) == MemberConstants.OMEGA)

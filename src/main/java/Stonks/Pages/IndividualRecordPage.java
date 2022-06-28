@@ -63,8 +63,8 @@ public class IndividualRecordPage
             String recName= RecordData.getRecordName(id);
             arrayOfButton[i] = new Button(recName);
 
-            if(i % 2 == 0)arrayOfButton[i].setStyle("-fx-font: 10 Serif; -fx-base: #4169E1; ");
-            else arrayOfButton[i].setStyle("-fx-font: 10 Serif; -fx-base: #FFD700; ");
+            if(i % 2 == 0)arrayOfButton[i].setStyle("-fx-font: 20 Serif; -fx-base: #4169E1; ");
+            else arrayOfButton[i].setStyle("-fx-font: 20 Serif; -fx-base: #FFD700; ");
 
             arrayOfButton[i].setPrefSize(500,100);
         }
@@ -95,7 +95,7 @@ public class IndividualRecordPage
         ScrollPane scrollRecordNames = new ScrollPane();
         scrollRecordNames.setContent(recordNames);
         scrollRecordNames.setPrefSize(500,400);
-        scrollRecordNames.setStyle("-fx-background: rgb(123,104,238);\n -fx-background-color: rgb(123,104,238)");
+        scrollRecordNames.setStyle("-fx-background: rgb(105,105,105);\n -fx-background-color: rgb(105,105,105)");
 
         individualRecordLayout.getChildren().addAll(scrollRecordNames, buttons);
 

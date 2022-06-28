@@ -53,6 +53,7 @@ public class RecordMemberPage
             int targetType= RecordData.getRecordMemberStatus(RecordData.getCurrentRecord(),recordMemberId.get(i));
             String memberName= UserData.getUsername(recordMemberId.get(i));
             memberNames[i] = new Label(memberName);
+            //memberNames[i].setTextFill(Color.color(0,0.6,.9));
             memberNames[i].setTextFill(Color.rgb(189,183,107));
             centralRecordMemberLayout.add(memberNames[i], 0, i);
             String status = "Alpha";
@@ -61,8 +62,8 @@ public class RecordMemberPage
             if(RecordData.getRecordMemberStatus(RecordData.getCurrentRecord(),recordMemberId.get(i))== MemberConstants.SIGMA){
                 status= "Sigma";
                 p1=0;
-                p2=0;
-                p3=0.5;
+                p2=0.6;
+                p3=0.9;
             }
             else if(RecordData.getRecordMemberStatus(RecordData.getCurrentRecord(),recordMemberId.get(i))==MemberConstants.OMEGA){
                 status= "Omega";
@@ -78,7 +79,7 @@ public class RecordMemberPage
             {
                 Button promote = new Button("Promote");
                 promote.setStyle("-fx-font: 15 Serif; -fx-base: #32CD32; ");
-                centralRecordMemberLayout.add(promote, 2, i);
+                centralRecordMemberLayout.add(promote, 13, i);
 
                 int finalI = i;
                 promote.setOnAction(e -> {
@@ -92,7 +93,7 @@ public class RecordMemberPage
             {
                 Button demote = new Button("Demote");
                 demote.setStyle("-fx-font: 15 Serif; -fx-base: #FF6347; ");
-                centralRecordMemberLayout.add(demote, 3, i);
+                centralRecordMemberLayout.add(demote, 14, i);
 
                 int finalI = i;
                 demote.setOnAction(e -> {
@@ -105,7 +106,8 @@ public class RecordMemberPage
             if(RecordData.hasRemoveMemberAccess(RecordData.getCurrentRecord(), UserData.getCurrentUser(), targetType))
             {
                 Button remove = new Button("Remove");
-                centralRecordMemberLayout.add(remove, 4, i);
+                remove.setStyle("-fx-font: 15 Serif; -fx-base: #708090; ");
+                centralRecordMemberLayout.add(remove, 15, i);
 
                 int finalI = i;
                 remove.setOnAction(e -> {
@@ -115,7 +117,7 @@ public class RecordMemberPage
                 });
             }
 
-            centralRecordMemberLayout.add(memberStatus[i], 1, i);
+            centralRecordMemberLayout.add(memberStatus[i], 4, i);
         }
 
 
