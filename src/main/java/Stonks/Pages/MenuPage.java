@@ -60,10 +60,10 @@ public class MenuPage
         individualRecords.setPrefSize(600, 400);
         groupRecords.setPrefSize(600, 400);
 
-        individualRecords.setStyle("-fx-font: 22 Serif; -fx-base: #4169E1; ");
-        groupRecords.setStyle("-fx-font: 22 Serif; -fx-base: #FFD700; ");
-        Invite.setStyle("-fx-font: 22 Serif; -fx-base: #40E0D0; ");
-        logOut.setStyle("-fx-font: 22 Serif; -fx-base: #708090; ");
+        individualRecords.setStyle("-fx-font: 22 Serif; -fx-base: #4A6572; ");
+        groupRecords.setStyle("-fx-font: 22 Serif; -fx-base: #F9AA33 ; ");
+        Invite.setStyle("-fx-font: 22 Serif; -fx-base: #F9AA33 ; ");
+        logOut.setStyle("-fx-font: 22 Serif; -fx-base: #4A6572; ");
 
 
 

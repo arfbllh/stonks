@@ -8,10 +8,15 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.GridPane;
+import javafx.scene.image.Image;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 
 public class RecordInputWindow
 {
@@ -27,9 +32,9 @@ public class RecordInputWindow
         recordInputWindowLayout.setPadding(new Insets(10, 10, 10, 10));
 
         Button saveButton = new Button("Save");
-        saveButton.setStyle("-fx-font: 15 Serif; -fx-base: #32CD32; ");
+        saveButton.setStyle("-fx-font: 15 Serif; -fx-base: #228B22; ");
         Button cancelButton = new Button("Cancel");
-        cancelButton.setStyle("-fx-font: 15 Serif; -fx-base: #DC143C; ");
+        cancelButton.setStyle("-fx-font: 15 Serif; -fx-base: #800000; ");
 
         //ChoiceBox<String> recordType = new ChoiceBox<>();
         //recordType.setValue("Personal");
@@ -38,6 +43,7 @@ public class RecordInputWindow
         //recordType.getItems().add("Group");
 
         Label enterRecord = new Label("Enter the name of record");
+        enterRecord.setTextFill(Color.rgb(255,215,0));
         enterRecord.setFont(new Font("Serif", 20));
 
         TextField nameOfRecord = new TextField();
@@ -82,7 +88,18 @@ public class RecordInputWindow
 
         recordInputWindow.initModality(Modality.APPLICATION_MODAL);
 
-        recordInputWindowLayout.setStyle("-fx-background: rgb(123,104,238);\n -fx-background-color: rgb(123,104,238)");
+        Image img2 = null;
+        try {
+            img2 = new Image(new FileInputStream("Background3.jpg"));
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        BackgroundImage myBI2= new BackgroundImage(img2,
+                BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
+                BackgroundSize.DEFAULT);
+        recordInputWindowLayout.setBackground(new Background(myBI2));
+
+        //recordInputWindowLayout.setStyle("-fx-background: rgb(123,104,238);\n -fx-background-color: rgb(123,104,238)");
 
         Scene recordInputWindowScene = new Scene(recordInputWindowLayout, 600, 300);
         recordInputWindow.setScene(recordInputWindowScene);

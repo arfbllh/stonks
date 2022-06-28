@@ -7,11 +7,14 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.HBox;
-import javafx.scene.layout.VBox;
+import javafx.scene.image.Image;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.util.Vector;
 
 public class EntryInputWindow
@@ -36,8 +39,11 @@ public class EntryInputWindow
         amount.setPromptText("Amount");
 
         Label tagLabel = new Label("Enter tag:");
+        tagLabel.setTextFill(Color.rgb(189,183,107));
         Label tagRemarks = new Label("Enter remarks:");
+        tagRemarks.setTextFill(Color.rgb(189,183,107));
         Label tagAmount = new Label("Enter amount");
+        tagAmount.setTextFill(Color.rgb(189,183,107));
         TextField tag = new TextField();
 
         Button cashIn = new Button("Cash in");
@@ -48,8 +54,8 @@ public class EntryInputWindow
         cashOut.setPrefSize(180,100);
         cancel.setPrefSize(140,100);
 
-        cashIn.setStyle("-fx-font: 15 Serif; -fx-base: #32CD32; ");
-        cashOut.setStyle("-fx-font: 15 Serif; -fx-base: #DC143C; ");
+        cashIn.setStyle("-fx-font: 15 Serif; -fx-base: #228B22; ");
+        cashOut.setStyle("-fx-font: 15 Serif; -fx-base: #800000; ");
         cancel.setStyle("-fx-font: 22 Serif; -fx-base: #708090; ");
 
         /*entryInputWindowLayout.add(entry, 0, 0);
@@ -69,7 +75,18 @@ public class EntryInputWindow
 
         informationLayout.getChildren().addAll(tagRemarks, entry,tagAmount, amount,tagLabel,tag);
         informationLayout.setPrefSize(500, 400);
-        informationLayout.setStyle("-fx-background: rgb(123,104,238);\n -fx-background-color: rgb(123,104,238)");
+        //informationLayout.setStyle("-fx-background: rgb(123,104,238);\n -fx-background-color: rgb(123,104,238)");
+
+        Image img2 = null;
+        try {
+            img2 = new Image(new FileInputStream("Background3.jpg"));
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        }
+        BackgroundImage myBI2= new BackgroundImage(img2,
+                BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
+                BackgroundSize.DEFAULT);
+        informationLayout.setBackground(new Background(myBI2));
 
         buttons.getChildren().addAll(cashIn,cashOut,cancel);
 

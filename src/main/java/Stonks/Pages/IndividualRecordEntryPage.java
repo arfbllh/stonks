@@ -159,7 +159,7 @@ public class IndividualRecordEntryPage
                 entries[i].setTextFill(Color.rgb(255,215,0));
 
                 viewButtons[i] = new Button("View");
-                viewButtons[i].setStyle("-fx-font: 15 Serif; -fx-base: #B0C4DE; ");
+                viewButtons[i].setStyle("-fx-font: 15 Serif; -fx-base: #F9AA33; ");
                 viewButtons[i].setPrefSize(100,40);
 
                 if (EntryData.isCashIn(id) == true) {

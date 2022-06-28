@@ -229,7 +229,7 @@ public class GroupRecordEntryPage
                 entries[i].setTextFill(Color.rgb(255,215,0));
 
                 viewButtons[i] = new Button("View");
-                viewButtons[i].setStyle("-fx-font: 15 Serif; -fx-base: #40E0D0; ");
+                viewButtons[i].setStyle("-fx-font: 15 Serif; -fx-base: #F9AA33; ");
                 viewButtons[i].setPrefSize(100,40);
 
                 if (EntryData.isCashIn(id) == true) {

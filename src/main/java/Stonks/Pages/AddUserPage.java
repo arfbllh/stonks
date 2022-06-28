@@ -61,7 +61,7 @@ public class AddUserPage
         back.setPrefSize(250,100);
         confirm.setPrefSize(250,100);
 
-        confirm.setStyle("-fx-font: 15 Serif; -fx-base: #32CD32; ");
+        confirm.setStyle("-fx-font: 15 Serif; -fx-base: #228B22; ");
         back.setStyle("-fx-font: 22 Serif; -fx-base: #708090; ");
 
         takename.getChildren().addAll(addUser,addName);

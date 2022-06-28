@@ -26,11 +26,11 @@ public class GroupRecordPage
         HBox buttons = new HBox();
 
         Button addRecord = new Button("Add Record");
-        addRecord.setStyle("-fx-font: 15 Serif; -fx-base: #32CD32; ");
+        addRecord.setStyle("-fx-font: 15 Serif; -fx-base: #228B22; ");
         addRecord.setPrefSize(250,100);
 
         Button cancel = new Button("Cancel");
-        cancel.setStyle("-fx-font: 15 Serif; -fx-base: #DC143C; ");
+        cancel.setStyle("-fx-font: 15 Serif; -fx-base: #800000; ");
         cancel.setPrefSize(250,100);
 
         Label blabel = new Label("");
@@ -66,8 +66,8 @@ public class GroupRecordPage
             String recName= RecordData.getRecordName(id);
             arrayOfButton2[i] = new Button(recName);
 
-            if(i % 2 == 0)arrayOfButton2[i].setStyle("-fx-font: 20 Serif; -fx-base: #4169E1; ");
-            else arrayOfButton2[i].setStyle("-fx-font: 20 Serif; -fx-base: #FFD700; ");
+            if(i % 2 == 0)arrayOfButton2[i].setStyle("-fx-font: 20 Serif; -fx-base: #F9AA33; ");
+            else arrayOfButton2[i].setStyle("-fx-font: 20 Serif; -fx-base: #4A6572; ");
 
             arrayOfButton2[i].setPrefSize(500,100);
 
@@ -99,7 +99,7 @@ public class GroupRecordPage
         ScrollPane scrollRecordNames = new ScrollPane();
         scrollRecordNames.setContent(recordNames);
         scrollRecordNames.setPrefSize(500,400);
-        scrollRecordNames.setStyle("-fx-background: rgb(105,105,105);\n -fx-background-color: rgb(105,105,105)");
+        scrollRecordNames.setStyle("-fx-background: rgb(0,0,0);\n -fx-background-color: rgb(0,0,0)");
 
         groupRecordLayout.getChildren().addAll(scrollRecordNames, buttons);
 
