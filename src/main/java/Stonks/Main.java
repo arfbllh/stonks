@@ -8,7 +8,7 @@ import java.sql.SQLException;
 
 import Stonks.Database.DB;
 
-public class HelloApplication extends Application
+public class Main extends Application
 {
     public static void main(String[] args) throws SQLException {
 
