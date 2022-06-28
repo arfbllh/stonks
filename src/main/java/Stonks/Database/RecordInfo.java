@@ -75,7 +75,6 @@ public class RecordInfo {
                 Vector<RecordMember> tmp = new Vector<>();
                 while(res.next()){
                     int k = res.getInt(2);
-                    System.out.println(k);
                     //if(res.getInt(1) == rec.getRecordMembers().get(0)) continue;
                     if(k == 0)
                         tmp.add(new AlphaMember(res.getInt(1)));
