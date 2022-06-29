@@ -118,6 +118,7 @@ public class EntryEditPage
         entryEditLayout.add(cancel, 4, 12);
         entryEditLayout.add(update, 2, 12);*/
         entryEditLayout.getChildren().addAll(informationLayout,buttons);
+        entryEditLayout.setStyle("-fx-background: rgb(74,101,114);\n -fx-background-color: rgb(74,101,114)");
 
         entryEditWindow.initModality(Modality.APPLICATION_MODAL);
 
