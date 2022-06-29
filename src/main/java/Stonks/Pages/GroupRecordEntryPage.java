@@ -175,8 +175,8 @@ public class GroupRecordEntryPage
                 BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
                 BackgroundSize.DEFAULT);
         information2.setBackground(new Background(myBI2));
-        information2.setStyle("-fx-background: rgb(0,0,0);\n -fx-background-color: rgb(0,0,0)");
-
+        information2.setStyle("-fx-background: rgb(69,69,69);\n -fx-background-color: rgb(69,69,69)"); //8,63,89
+        //25,25,112
         //informationLayout.setSpacing(30);
         //informationLayout.setStyle("-fx-background: rgb(255,215,0);\n -fx-background-color: rgb(255,215,0)");
         informationLayout.getChildren().addAll(information1, information2);

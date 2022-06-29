@@ -99,7 +99,7 @@ public class GroupRecordPage
         ScrollPane scrollRecordNames = new ScrollPane();
         scrollRecordNames.setContent(recordNames);
         scrollRecordNames.setPrefSize(500,400);
-        scrollRecordNames.setStyle("-fx-background: rgb(0,0,0);\n -fx-background-color: rgb(0,0,0)");
+        scrollRecordNames.setStyle("-fx-background: rgb(179,211,227);\n -fx-background-color: rgb(179,211,227)");
 
         groupRecordLayout.getChildren().addAll(scrollRecordNames, buttons);
 
