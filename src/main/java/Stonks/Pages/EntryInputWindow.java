@@ -82,6 +82,7 @@ public class EntryInputWindow
                 BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
                 BackgroundSize.DEFAULT);
         informationLayout.setBackground(new Background(myBI2));
+        informationLayout.setStyle("-fx-background: rgb(74,101,114);\n -fx-background-color: rgb(74,101,114)");
 
         buttons.getChildren().addAll(cashIn,cashOut,cancel);
 

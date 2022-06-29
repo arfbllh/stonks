@@ -237,6 +237,7 @@ public class AddUserPage
                     BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
                     BackgroundSize.DEFAULT);
             informationLayout.setBackground(new Background(myBI2));
+            informationLayout.setStyle("-fx-background: rgb(0,0,0);\n -fx-background-color: rgb(0,0,0)");
 
             Scene entryViewScene = new Scene(entryViewLayout, 500, 500);
             entryViewWindow.setScene(entryViewScene);

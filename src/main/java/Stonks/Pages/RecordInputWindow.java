@@ -94,6 +94,7 @@ public class RecordInputWindow
                 BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
                 BackgroundSize.DEFAULT);
         recordInputWindowLayout.setBackground(new Background(myBI2));
+        recordInputWindowLayout.setStyle("-fx-background: rgb(0,0,0);\n -fx-background-color: rgb(0,0,0)");
 
         //recordInputWindowLayout.setStyle("-fx-background: rgb(123,104,238);\n -fx-background-color: rgb(123,104,238)");
 
