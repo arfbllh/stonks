@@ -167,6 +167,7 @@ public class GroupRecordEntryPage
                 BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
                 BackgroundSize.DEFAULT);
         information1.setBackground(new Background(myBI));
+        information1.setStyle("-fx-background: rgb(74,101,114);\n -fx-background-color: rgb(74,101,114)");
 
         Image img3 = null;
         img3 = new Image("Background2.jpg");
@@ -174,6 +175,7 @@ public class GroupRecordEntryPage
                 BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
                 BackgroundSize.DEFAULT);
         information2.setBackground(new Background(myBI2));
+        information2.setStyle("-fx-background: rgb(0,0,0);\n -fx-background-color: rgb(0,0,0)");
 
         //informationLayout.setSpacing(30);
         //informationLayout.setStyle("-fx-background: rgb(255,215,0);\n -fx-background-color: rgb(255,215,0)");
@@ -320,6 +322,7 @@ public class GroupRecordEntryPage
                 BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
                 BackgroundSize.DEFAULT);
         entryLayout.setBackground(new Background(myBI1));
+        entryLayout.setStyle("-fx-background: rgb(74,101,114);\n -fx-background-color: rgb(74,101,114)");
 
         ScrollPane scrollEntryLayout = new ScrollPane();
         scrollEntryLayout.setContent(entryLayout);

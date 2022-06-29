@@ -109,6 +109,7 @@ public class IndividualRecordEntryPage
                 BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
                 BackgroundSize.DEFAULT);
         informationLayout.setBackground(new Background(myBI));
+        informationLayout.setStyle("-fx-background: rgb(0,0,0);\n -fx-background-color: rgb(0,0,0)");
 
         //informationLayout.setStyle("-fx-background: rgb(255,215,0);\n -fx-background-color: rgb(255,215,0)");
         informationLayout.getChildren().addAll(totalCashIn,cashInAmount,totalCashOut,cashOutAmount,netCash,netAmount);
@@ -229,6 +230,8 @@ public class IndividualRecordEntryPage
                 BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
                 BackgroundSize.DEFAULT);
         entryLayout.setBackground(new Background(myBI2));
+        entryLayout.setStyle("-fx-background: rgb(74,101,114);\n -fx-background-color: rgb(74,101,114)");
+
         if(myBI2 == null) System.out.println("nothing");
         ScrollPane scrollEntryLayout = new ScrollPane();
         scrollEntryLayout.setContent(entryLayout);

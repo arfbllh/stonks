@@ -34,6 +34,7 @@ public class InvitePage
                 BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
                 BackgroundSize.DEFAULT);
         inviteLayout.setBackground(new Background(myBI2));
+        inviteLayout.setStyle("-fx-background: rgb(74,101,114);\n -fx-background-color: rgb(74,101,114)");
 
         Vector<Invite> invites= UserData.getUserInvites(UserData.getCurrentUser());
         int numberOfInvites = invites.size();

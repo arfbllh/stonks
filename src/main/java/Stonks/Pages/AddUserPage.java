@@ -138,6 +138,7 @@ public class AddUserPage
                 BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
                 BackgroundSize.DEFAULT);
         addUserLayout.setBackground(new Background(myBI2));
+        addUserLayout.setStyle("-fx-background: rgb(74,101,114);\n -fx-background-color: rgb(74,101,114)");
 
         addUserWindow.initModality(Modality.APPLICATION_MODAL);
         Scene addUserScene = new Scene(addUserLayout, 400, 400);
@@ -237,6 +238,7 @@ public class AddUserPage
                     BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
                     BackgroundSize.DEFAULT);
             informationLayout.setBackground(new Background(myBI2));
+            informationLayout.setStyle("-fx-background: rgb(74,101,114);\n -fx-background-color: rgb(74,101,114)");
 
             Scene entryViewScene = new Scene(entryViewLayout, 500, 500);
             entryViewWindow.setScene(entryViewScene);

@@ -135,6 +135,7 @@ public class RecordMemberPage
                 BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
                 BackgroundSize.DEFAULT);
         finalRecordMemberLayout.setBackground(new Background(myBI2));
+        finalRecordMemberLayout.setStyle("-fx-background: rgb(74,101,114);\n -fx-background-color: rgb(74,101,114)");
 
 
         Scene recordMemberScene = new Scene(finalRecordMemberLayout, 600, 600);
