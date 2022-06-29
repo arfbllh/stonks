@@ -18,7 +18,6 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.util.Pair;
 
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.Vector;
 
@@ -163,22 +162,14 @@ public class GroupRecordEntryPage
         information2.getChildren().addAll(lstatus,status);
 
         Image img2 = null;
-        try {
-            img2 = new Image(new FileInputStream("Background5.jpg"));
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        }
+        img2 = new Image("Background5.jpg");
         BackgroundImage myBI= new BackgroundImage(img2,
                 BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
                 BackgroundSize.DEFAULT);
         information1.setBackground(new Background(myBI));
 
         Image img3 = null;
-        try {
-            img3 = new Image(new FileInputStream("Background2.jpg"));
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        }
+        img3 = new Image("Background2.jpg");
         BackgroundImage myBI2= new BackgroundImage(img3,
                 BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
                 BackgroundSize.DEFAULT);
@@ -324,11 +315,7 @@ public class GroupRecordEntryPage
         visualizationLayout.getChildren().addAll(g1, toggle);
 
         Image img = null;
-        try {
-            img = new Image(new FileInputStream("Background3.jpg"));
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        }
+        img = new Image("Background3.jpg");
         BackgroundImage myBI1= new BackgroundImage(img,
                 BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
                 BackgroundSize.DEFAULT);

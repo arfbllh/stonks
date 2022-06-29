@@ -17,7 +17,6 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.util.Pair;
 
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.Vector;
 
@@ -105,11 +104,7 @@ public class IndividualRecordEntryPage
         netAmount.setPrefSize(200,30);
 
         Image img = null;
-        try {
-            img = new Image(new FileInputStream("Background2.jpg"));
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        }
+        img = new Image("Background2.jpg");
         BackgroundImage myBI= new BackgroundImage(img,
                 BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
                 BackgroundSize.DEFAULT);
@@ -229,16 +224,12 @@ public class IndividualRecordEntryPage
         visualizationLayout.getChildren().addAll(g1, toggle);
 
         Image img2 = null;
-        try {
-            img2 = new Image(new FileInputStream("Background3.jpg"));
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        }
+        img2 = new Image("Background3.jpg");
         BackgroundImage myBI2= new BackgroundImage(img2,
                 BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
                 BackgroundSize.DEFAULT);
         entryLayout.setBackground(new Background(myBI2));
-
+        if(myBI2 == null) System.out.println("nothing");
         ScrollPane scrollEntryLayout = new ScrollPane();
         scrollEntryLayout.setContent(entryLayout);
 

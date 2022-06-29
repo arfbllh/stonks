@@ -91,11 +91,7 @@ public class MenuPage
         });
 
         Image img = null;
-        try {
-            img = new Image(new FileInputStream("Background.jpg"));
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        }
+        img = new Image("Background.jpg");
         BackgroundImage myBI= new BackgroundImage(img,
                 BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
                 BackgroundSize.DEFAULT);

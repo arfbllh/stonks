@@ -10,7 +10,7 @@ import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 
-import java.io.FileInputStream;
+
 import java.io.FileNotFoundException;
 
 public class RegisterPage
@@ -82,11 +82,7 @@ public class RegisterPage
         BorderPane finalRegisterLayout = new BorderPane();
 
         Image img2 = null;
-        try {
-            img2 = new Image(new FileInputStream("Background.jpg"));
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        }
+        img2 = new Image("Background.jpg");
         BackgroundImage myBI2= new BackgroundImage(img2,
                 BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
                 BackgroundSize.DEFAULT);

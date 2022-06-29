@@ -13,7 +13,6 @@ import javafx.scene.paint.Color;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.util.Vector;
 
@@ -78,11 +77,7 @@ public class EntryInputWindow
         //informationLayout.setStyle("-fx-background: rgb(123,104,238);\n -fx-background-color: rgb(123,104,238)");
 
         Image img2 = null;
-        try {
-            img2 = new Image(new FileInputStream("Background3.jpg"));
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        }
+        img2 = new Image("Background3.jpg");
         BackgroundImage myBI2= new BackgroundImage(img2,
                 BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
                 BackgroundSize.DEFAULT);

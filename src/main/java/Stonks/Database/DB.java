@@ -5,13 +5,20 @@ import Stonks.Entries.EntryData;
 import Stonks.Users.UserData;
 import Stonks.Records.*;
 
+import java.io.File;
+import java.io.IOException;
+import java.net.URISyntaxException;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.sql.*;
 public class DB {
     public static Connection connection;
     public static void Connector(){
         try{
             Class.forName("org.sqlite.JDBC");
-            connection = DriverManager.getConnection("jdbc:sqlite:src/main/resources/stonks.db");
+            String path = "jdbc:sqlite:" + new java.io.File(".").getCanonicalPath() + "/stonks.db";
+            System.out.println(path);
+            connection = DriverManager.getConnection(path);
             if(connection == null){
                 System.out.println("Stonks.Database connection was not success");
             }
@@ -20,6 +27,8 @@ public class DB {
             }
         } catch (SQLException | ClassNotFoundException e) {
             e.printStackTrace();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
         }
 
         start();

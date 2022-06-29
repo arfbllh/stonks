@@ -84,15 +84,14 @@ public class LoginPage
         loginLayout.add(register, 2, 8);
 
         Image img2 = null;
-        try {
-            img2 = new Image(new FileInputStream("Background.jpg"));
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        }
+
+        img2 = new Image("Background.jpg");
+
         BackgroundImage myBI2= new BackgroundImage(img2,
                 BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
                 BackgroundSize.DEFAULT);
         loginLayout.setBackground(new Background(myBI2));
+
 
         Scene loginScene = new Scene(loginLayout, 1200, 800);
         window.Window.setScene(loginScene);

@@ -130,11 +130,7 @@ public class RecordMemberPage
 
 
         Image img2 = null;
-        try {
-            img2 = new Image(new FileInputStream("Background3.jpg"));
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        }
+        img2 = new Image("Background3.jpg");
         BackgroundImage myBI2= new BackgroundImage(img2,
                 BackgroundRepeat.REPEAT, BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT,
                 BackgroundSize.DEFAULT);
